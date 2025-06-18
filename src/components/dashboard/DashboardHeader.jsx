@@ -95,7 +95,7 @@ const DashboardHeader = ({ toggleSidebar, isScrolled }) => {
             </button>
 
             <Link to="/dashboard" className="flex items-center">
-              <h1 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+              <h1 className="text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-600">
                 ServiJoy
               </h1>
             </Link>

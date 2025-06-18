@@ -1,0 +1,23 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22c55e" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="shadow" x="-2" y="0" width="64" height="64">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  
+  <!-- Background circle with subtle gradient -->
+  <circle cx="30" cy="30" r="28" fill="white" filter="url(#shadow)" />
+  
+  <!-- Logo Icon - Stylized S with smile -->
+  <g>
+    <path d="M30 10C24.5 10 20 12.5 20 17C20 21.5 24 23 30 24C36 25 40 26.5 40 31C40 35.5 35.5 38 30 38C24.5 38 20 35.5 20 31" 
+          stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round" />
+    <path d="M20 31C20 35.5 24.5 40 30 40C35.5 40 40 35.5 40 31" 
+          stroke="url(#logoGradient)" stroke-width="6" stroke-linecap="round" />
+  </g>
+</svg>

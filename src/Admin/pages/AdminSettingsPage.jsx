@@ -583,7 +583,7 @@ const ThemeSettings = ({ onSave }) => {
   const colorOptions = [
     { name: "blue", color: "#3b82f6", label: "Blue" },
     { name: "indigo", color: "#6366f1", label: "Indigo" },
-    { name: "purple", color: "#8b5cf6", label: "Purple" },
+    { name: "violet", color: "#8b5cf6", label: "Violet" },
     { name: "pink", color: "#ec4899", label: "Pink" },
     { name: "green", color: "#10b981", label: "Green" },
     { name: "amber", color: "#f59e0b", label: "Amber" }

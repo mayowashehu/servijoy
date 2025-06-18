@@ -169,8 +169,8 @@ const ServiceModals = () => {
               <p className="text-sm text-gray-500 dark:text-gray-400">Completed</p>
               <h3 className="text-2xl font-bold">85</h3>
             </div>
-            <div className="p-3 rounded-full bg-purple-100 dark:bg-purple-900">
-              <FaFile className="text-purple-600 dark:text-purple-300" />
+            <div className="p-3 rounded-full bg-violet-100 dark:bg-violet-900">
+              <FaFile className="text-violet-600 dark:text-violet-300" />
             </div>
           </div>
           <div className="mt-2 text-sm text-green-500">+8% from last week</div>
@@ -194,7 +194,7 @@ const ServiceModals = () => {
             <FaTags className="mr-2" /> View Category
           </button>
           <button 
-            className="flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+            className="flex items-center px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors"
             onClick={() => setShowEditCategoryModal(true)}
           >
             <FaEdit className="mr-2" /> Edit Category
@@ -315,7 +315,7 @@ const ServiceModals = () => {
           
           <div className="flex justify-end gap-2 mt-6">
             <button 
-              className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+              className="px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors"
               onClick={() => {
                 setShowCategoryModal(false);
                 setShowEditCategoryModal(true);

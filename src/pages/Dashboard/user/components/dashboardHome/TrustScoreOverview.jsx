@@ -33,7 +33,7 @@ const TrustScoreOverview = () => {
 
   // Calculate trust level based on score
   const getTrustLevel = (score) => {
-    if (score >= 90) return { level: "Premium", color: "text-purple-600 dark:text-purple-400" };
+    if (score >= 90) return { level: "Premium", color: "text-violet-600 dark:text-violet-400" };
     if (score >= 80) return { level: "Advanced", color: "text-blue-600 dark:text-blue-400" };
     if (score >= 70) return { level: "Established", color: "text-green-600 dark:text-green-400" };
     if (score >= 50) return { level: "Growing", color: "text-yellow-600 dark:text-yellow-400" };
@@ -44,7 +44,7 @@ const TrustScoreOverview = () => {
 
   // Get color for progress bar based on score
   const getProgressColor = (score) => {
-    if (score >= 90) return "from-purple-400 to-purple-600";
+    if (score >= 90) return "from-violet-400 to-violet-600";
     if (score >= 80) return "from-blue-400 to-blue-600";
     if (score >= 70) return "from-green/40 to-green/60";
     if (score >= 50) return "from-yellow-400 to-yellow-600";

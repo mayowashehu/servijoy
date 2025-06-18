@@ -10,7 +10,7 @@ const HowItWorksPage = () => {
     <main className=''>
       <HowItWorksHero />
     <HowItWorksSteps />
-    <FAQ />
+    { /* <FAQ /> */}
     <TestimonialsSection />
     <ContactUs />
     </main>

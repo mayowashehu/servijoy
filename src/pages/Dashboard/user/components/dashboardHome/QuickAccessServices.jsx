@@ -62,7 +62,7 @@ const QuickAccessServices = () => {
           id: 5, 
           name: "Cooking", 
           icon: <FaUtensils />, 
-          color: "from-purple-400 to-purple-600",
+          color: "from-violet-400 to-violet-600",
           rating: 4.9,
           bookings: 1500,
           description: "Personal chef and catering services"

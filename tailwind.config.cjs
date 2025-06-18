@@ -28,9 +28,15 @@ module.exports = {
 		  body: ['Manrope', 'sans-serif'],
 		},
 		colors: {
-		  green: '#38A169',
+		  green: '#22c55e', // Updated from #38A169 to #22c55e for more vibrancy
 		  "soft-white": "#F8FAFC",
 		  "light-gray": "#F3F4F6",
+          // New brand colors - Updated for rebranding
+          brand: {
+            green: '#22c55e',
+            blue: '#3b82f6',
+            violet: '#8b5cf6', // Renamed from purple to violet for consistency
+          },
 		  sidebar: {
 			DEFAULT: 'hsl(var(--sidebar-background))',
 			foreground: 'hsl(var(--sidebar-foreground))',
@@ -56,17 +62,17 @@ module.exports = {
 	  themes: [
 		{
 		  servijoy: {
-			"primary": "#38A169",
-			"primary-focus": "#2f855a",
+			"primary": "#22c55e", // Updated from #38A169
+			"primary-focus": "#16a34a",
 			"primary-content": "#ffffff",
-			"secondary": "#38A169",
-			"accent": "#38A169",
+			"secondary": "#3b82f6", // Changed to blue
+			"accent": "#8b5cf6", // Added violet as accent
 			"neutral": "#1f2937",
 			"base-100": "#F8FAFC",
 			"info": "#3ABFF8",
-			"success": "#36D399",
-			"warning": "#FBBD23",
-			"error": "#F87272",
+			"success": "#22c55e", // Updated to match primary
+			"warning": "#f59e0b", // Updated to amber-500
+			"error": "#ef4444", // Updated to red-500
 		  },
 		},
 	  ],

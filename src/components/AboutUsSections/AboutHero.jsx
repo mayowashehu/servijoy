@@ -69,7 +69,7 @@ const AboutHero = () => {
       </div>
       
       {/* Content container */}
-      <div className="container relative mx-auto px-6 lg:px-20">
+      <div className="container relative mx-auto px-2 lg:px-10">
         <AnimatePresence>
           {isLoaded && (
             <motion.div 
@@ -80,7 +80,7 @@ const AboutHero = () => {
             >
               {/* Accent line */}
               <motion.div 
-                className="w-16 h-1 bg-green/40 mb-6" 
+                className="w-16 h-1 bg-gradient-to-r from-green/50/ to-blue-500/60 mb-6" 
                 variants={item}
               />
               
@@ -89,10 +89,10 @@ const AboutHero = () => {
                 variants={item}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
               >
-                <span className="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-green/30 via-blue-400 to-purple-400">
+                <span className="relative inline-block bg-clip-text text-transparent bg-gradient-to-r from-green/50 via-blue-500 to-violet-500">
                   Empowering Seamless
                   <motion.span
-                    className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green/30 via-blue-400 to-purple-400 rounded-full"
+                    className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-green/50 via-blue-500 to-violet-500 rounded-full"
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ delay: 1.2, duration: 0.8 }}
@@ -155,7 +155,7 @@ const AboutHero = () => {
                   <span className="relative z-10">Explore Services</span>
                   {activeButton === "explore" && (
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-green/40 to-emerald-500" 
+                      className="absolute inset-0 bg-gradient-to-r from-green/50 to-blue-500" 
                       layoutId="buttonBackground"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}

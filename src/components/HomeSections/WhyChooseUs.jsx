@@ -25,7 +25,7 @@ const WhyChooseUs = () => {
       icon: <FaUserCheck className="text-4xl" />, 
       title: "Secure Payments", 
       desc: "Your transactions are protected with escrow, ensuring peace of mind.",
-      color: "from-violet-500 to-purple-600"
+      color: "from-violet-500 to-violet-600"
     }
   ];
 

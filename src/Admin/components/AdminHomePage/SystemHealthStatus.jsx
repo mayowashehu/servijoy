@@ -153,7 +153,7 @@ const SystemHealthStatus = () => {
           additionalInfo="Avg. response"
         />
         <StatusCard
-          icon={<Database className="text-purple-500" size={18} />}
+          icon={<Database className="text-violet-500" size={18} />}
           label="Database"
           value={systemHealth.databaseStatus}
           valueColor="text-green-500"
@@ -174,7 +174,7 @@ const SystemHealthStatus = () => {
             <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-4">System Resources</h3>
             <div className="space-y-3">
               <ProgressBar value={systemHealth.metrics.cpu} label="CPU Usage" color="bg-blue-500" />
-              <ProgressBar value={systemHealth.metrics.memory} label="Memory Usage" color="bg-purple-500" />
+              <ProgressBar value={systemHealth.metrics.memory} label="Memory Usage" color="bg-violet-500" />
               <ProgressBar value={systemHealth.metrics.disk} label="Disk Usage" color="bg-green-500" />
               <ProgressBar value={systemHealth.metrics.network} label="Network Load" color="bg-yellow-500" />
             </div>

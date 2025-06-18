@@ -50,14 +50,14 @@ function NotFoundPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-900 via-purple-800 to-pink-700 text-white relative overflow-hidden">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-900 via-violet-800 to-pink-700 text-white relative overflow-hidden">
       <div className="w-full max-w-3xl px-6 py-12 flex flex-col items-center text-center">
         {/* Space background particles */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           {[...Array(50)].map((_, i) => (
             <motion.div
               key={i}
-              className={`absolute rounded-full ${i % 5 === 0 ? 'bg-purple-400' : i % 3 === 0 ? 'bg-blue-400' : 'bg-white'}`}
+              className={`absolute rounded-full ${i % 5 === 0 ? 'bg-violet-400' : i % 3 === 0 ? 'bg-blue-400' : 'bg-white'}`}
               style={{
                 width: `${(i % 4) + 1}px`,
                 height: `${(i % 4) + 1}px`,
@@ -383,7 +383,7 @@ function NotFoundPage() {
                       className="p-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-lg hover:bg-white/20 transition-all flex items-center space-x-3 group relative overflow-hidden"
                     >
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/10 to-purple-500/0"
+                        className="absolute inset-0 bg-gradient-to-r from-violet-500/0 via-violet-500/10 to-violet-500/0"
                         initial={{ x: '-100%' }}
                         whileHover={{ x: '100%' }}
                         transition={{ duration: 0.8 }}
@@ -441,20 +441,7 @@ function NotFoundPage() {
         )}
       </AnimatePresence>
       
-      {/* Footer */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="mt-auto py-4 text-sm text-gray-400 relative z-10"
-      >
-        <motion.p
-          whileHover={{ color: "#ffffff" }}
-          transition={{ duration: 0.3 }}
-        >
-          © {new Date().getFullYear()} Your Company • All rights reserved
-        </motion.p>
-      </motion.div>
+    
     </div>
   );
 }

@@ -57,7 +57,7 @@ const DashboardFooter = () => {
           {/* Logo and About Section */}
           <div className="md:col-span-4 flex flex-col">
             <Link to="/dashboard" className="inline-block">
-              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-violet-600">
                 ServiJoy
               </span>
             </Link>
@@ -70,7 +70,7 @@ const DashboardFooter = () => {
             <div className="flex space-x-4 mt-6">
               <SocialIcon Icon={FaFacebookF} label="Facebook" color="bg-blue-500" />
               <SocialIcon Icon={FaTwitter} label="Twitter" color="bg-blue-400" />
-              <SocialIcon Icon={FaInstagram} label="Instagram" color="bg-gradient-to-r from-purple-500 to-pink-500" />
+              <SocialIcon Icon={FaInstagram} label="Instagram" color="bg-gradient-to-r from-violet-500 to-pink-500" />
               <SocialIcon Icon={FaLinkedinIn} label="LinkedIn" color="bg-blue-600" />
             </div>
           </div>

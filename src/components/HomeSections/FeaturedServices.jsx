@@ -148,7 +148,7 @@ const FeaturedServices = () => {
                 <div className={`h-2/5 p-4 bg-white relative transition-all duration-300
                   ${hoveredIndex === index ? 'bg-gradient-to-br from-blue-50 to-sky-100' : ''}`}>
                   <div className={`absolute -top-6 left-0 right-0 h-12 
-                    ${isEven ? 'bg-gradient-to-r from-blue-500 to-purple-500' : 'bg-gradient-to-r from-teal-500 to-emerald-500'}
+                    ${isEven ? 'bg-gradient-to-r from-blue-500 to-violet-500' : 'bg-gradient-to-r from-teal-500 to-emerald-500'}
                     skew-y-3 transform origin-right z-0`}
                   />
                   

@@ -125,8 +125,8 @@ const VendorDisputeDetailsModal = ({ dispute, isOpen, onClose, onUpdateStatus, i
                 </div>
               </div>
               <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-3">
-                  <FaCalendarAlt className="text-purple-600 dark:text-purple-400" />
+                <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900 flex items-center justify-center mr-3">
+                  <FaCalendarAlt className="text-violet-600 dark:text-violet-400" />
                 </div>
                 <div>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Date</p>

@@ -19,7 +19,7 @@ const HomePage = () => {
       <WhyChooseUs />
       <TestimonialsSection />
       <BecomeAVendor />
-      <FAQ />
+      {/* <FAQ /> */ }
       <AboutClosing />
       <ContactUs />
     </main>

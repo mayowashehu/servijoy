@@ -76,8 +76,8 @@ const values = [
     icon: <IconHandshake />,
     title: "Trust & Integrity",
     description: "We prioritize honesty, ensuring secure and transparent transactions at all times.",
-    color: "bg-emerald-500",
-    gradient: "from-emerald-400 to-green-600",
+    color: "bg-green/50",
+    gradient: "from-green/50 to-blue-500",
     delay: 0.1
   },
   {
@@ -85,23 +85,23 @@ const values = [
     title: "Security & Reliability",
     description: "Your safety matters. We implement top-tier security to protect your interests.",
     color: "bg-blue-500", 
-    gradient: "from-blue-400 to-indigo-600",
+    gradient: "from-blue-500 to-violet-500",
     delay: 0.2
   },
   {
     icon: <IconUsers />,
     title: "Community & Support",
     description: "We're building a thriving network where users and vendors support each other.",
-    color: "bg-emerald-500",
-    gradient: "from-emerald-400 to-green-600",
+    color: "bg-green/50",
+    gradient: "from-green/50 to-blue-500",
     delay: 0.3
   },
   {
     icon: <IconStar />,
     title: "Excellence & Quality",
     description: "We set the highest standards, ensuring top-tier service providers every time.",
-    color: "bg-amber-500",
-    gradient: "from-amber-400 to-yellow-600",
+    color: "bg-violet-500",
+    gradient: "from-violet-500 to-blue-500",
     delay: 0.4
   },
   {
@@ -109,15 +109,15 @@ const values = [
     title: "Innovation & Growth",
     description: "We continuously evolve, adapting to new technologies for a better experience.",
     color: "bg-blue-500",
-    gradient: "from-blue-400 to-indigo-600",
+    gradient: "from-blue-500 to-green/50",
     delay: 0.5
   },
   {
     icon: <IconHeart />,
     title: "Customer Satisfaction",
     description: "Our users come first. We strive to make every experience smooth and joyful.",
-    color: "bg-rose-500",
-    gradient: "from-rose-400 to-red-600",
+    color: "bg-green/50",
+    gradient: "from-green/50 to-violet-500",
     delay: 0.6
   },
 ];
@@ -150,7 +150,7 @@ const OurValues = () => {
     <section className="w-full py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-5 pointer-events-none">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-green/50 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-500 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
       </div>
       
@@ -164,7 +164,7 @@ const OurValues = () => {
           className="text-center mb-16 max-w-2xl mx-auto"
         >
           <div className="inline-block mb-3">
-            <span className="text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-emerald-500 to-blue-500 bg-clip-text text-transparent">Our Foundation</span>
+            <span className="text-sm font-bold tracking-wider uppercase bg-gradient-to-r from-green/50 to-blue-500 bg-clip-text text-transparent">Our Foundation</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent mb-4">What Drives Us</h2>
           <p className="text-gray-600 text-lg mt-4 leading-relaxed">
@@ -231,7 +231,7 @@ const OurValues = () => {
           transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
           className="mt-16 text-center"
         >
-          <a href="#" className="inline-flex items-center justify-center px-6 py-4 rounded-full bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-medium text-base transition-transform hover:translate-y-1 shadow-lg hover:shadow-xl">
+          <a href="#" className="inline-flex items-center justify-center px-6 py-4 rounded-full bg-gradient-to-r from-green/50 to-blue-500 text-white font-medium text-base transition-transform hover:translate-y-1 shadow-lg hover:shadow-xl">
             <span>Learn More About Our Mission</span>
             <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>

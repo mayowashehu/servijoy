@@ -121,7 +121,7 @@ const VendorQuickAccess = () => {
         title: "Dispute Center",
         description: "Resolve client issues quickly",
         icon: <DisputeIcon />,
-        bgClass: "bg-gradient-to-br from-purple-600 to-fuchsia-800",
+        bgClass: "bg-gradient-to-br from-violet-600 to-fuchsia-800",
         route: "/dashboard/vendor-disputes",
         stats: "0 open"
       },

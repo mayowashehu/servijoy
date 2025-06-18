@@ -12,7 +12,7 @@ const BecomeAVendorPage = () => {
       <WhyBecomeVendor />
       <HowItWorksVendor />
       <BecomeVendorCTA />
-      <BecomeVendorFAQ />
+     { /* <BecomeVendorFAQ /> */}
     </main>
   )
 }

@@ -3,21 +3,29 @@
  * 
  * This file contains theme variables and utility functions for the enhanced UI/UX
  * across user and vendor dashboards.
+ * 
+ * Updated as part of the 2023 ServiJoy rebranding initiative.
  */
 
-// Color palette with enhanced gradients
+// Color palette with enhanced gradients - Updated for rebranding
 export const colors = {
   primary: {
+    light: '#4ade80', // green-400
+    main: '#22c55e', // green-500
+    dark: '#16a34a', // green-600
+    gradient: 'linear-gradient(135deg, #22c55e, #16a34a)'
+  },
+  secondary: {
     light: '#60a5fa', // blue-400
     main: '#3b82f6', // blue-500
     dark: '#2563eb', // blue-600
     gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)'
   },
-  secondary: {
-    light: '#a78bfa', // violet-400
-    main: '#8b5cf6', // violet-500
-    dark: '#7c3aed', // violet-600
-    gradient: 'linear-gradient(135deg, #8b5cf6, #7c3aed)'
+  accent: {
+    light: '#c4b5fd', // violet-300
+    main: '#a78bfa', // violet-400
+    dark: '#8b5cf6', // violet-500
+    gradient: 'linear-gradient(135deg, #a78bfa, #8b5cf6)'
   },
   success: {
     light: '#4ade80', // green-400
@@ -49,11 +57,13 @@ export const colors = {
     800: '#262626',
     900: '#171717',
   },
-  // Brand colors
+  // Brand colors - Updated for rebranding
   brand: {
-    green: '#38A169',
+    green: '#22c55e', // Updated from #38A169 to #22c55e for more vibrancy
     blue: '#3b82f6',
-    gradient: 'linear-gradient(135deg, #38A169, #3b82f6)'
+    violet: '#8b5cf6', // New accent color (renamed from purple to violet for consistency)
+    gradient: 'linear-gradient(135deg, #22c55e, #3b82f6)', // green to blue
+    gradientAlt: 'linear-gradient(135deg, #22c55e, #8b5cf6)' // green to violet
   }
 };
 
@@ -68,7 +78,7 @@ export const shadows = {
   // Colored shadows for cards
   blue: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
   green: '0 10px 15px -3px rgba(34, 197, 94, 0.3)',
-  purple: '0 10px 15px -3px rgba(139, 92, 246, 0.3)',
+  violet: '0 10px 15px -3px rgba(139, 92, 246, 0.3)',
   // Glass effect shadows
   glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)'
 };
@@ -166,7 +176,7 @@ export const glassMorphism = {
   }
 };
 
-// Card styles with enhanced visual appeal
+// Card styles with enhanced visual appeal - Updated for rebranding
 export const cardStyles = {
   default: {
     light: 'bg-white border border-gray-200 shadow-md rounded-xl',
@@ -181,29 +191,43 @@ export const cardStyles = {
     dark: 'bg-gray-800/70 backdrop-blur-md border border-gray-700/20 shadow-lg rounded-xl'
   },
   gradient: {
-    blue: 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/20 rounded-xl',
+    // Primary brand colors first
+    brand: 'bg-gradient-to-br from-green-500 to-blue-500 text-white shadow-lg shadow-blue-500/20 rounded-xl',
+    brandAlt: 'bg-gradient-to-br from-green-500 to-violet-500 text-white shadow-lg shadow-violet-500/20 rounded-xl',
+    // Individual colors
     green: 'bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg shadow-green-500/20 rounded-xl',
-    purple: 'bg-gradient-to-br from-violet-500 to-violet-600 text-white shadow-lg shadow-violet-500/20 rounded-xl',
-    brand: 'bg-gradient-to-br from-green to-blue-500 text-white shadow-lg shadow-blue-500/20 rounded-xl'
+    blue: 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/20 rounded-xl',
+    violet: 'bg-gradient-to-br from-violet-400 to-violet-500 text-white shadow-lg shadow-violet-500/20 rounded-xl'
   }
 };
 
-// Button styles with enhanced visual appeal
+// Button styles with enhanced visual appeal - Updated for rebranding
 export const buttonStyles = {
+  // Primary brand color - Green
   primary: {
+    base: 'inline-flex items-center justify-center rounded-lg font-medium transition-all',
+    solid: 'bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg active:shadow-sm',
+    outline: 'border-2 border-green-600 text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30',
+    ghost: 'text-green-600 hover:bg-green-50 dark:hover:bg-green-900/30',
+    gradient: 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-md hover:shadow-lg active:shadow-sm'
+  },
+  // Secondary brand color - Blue
+  secondary: {
     base: 'inline-flex items-center justify-center rounded-lg font-medium transition-all',
     solid: 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg active:shadow-sm',
     outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30',
     ghost: 'text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/30',
     gradient: 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-md hover:shadow-lg active:shadow-sm'
   },
-  secondary: {
+  // Accent brand color - Violet
+  accent: {
     base: 'inline-flex items-center justify-center rounded-lg font-medium transition-all',
-    solid: 'bg-violet-600 hover:bg-violet-700 text-white shadow-md hover:shadow-lg active:shadow-sm',
-    outline: 'border-2 border-violet-600 text-violet-600 hover:bg-violet-50 dark:hover:bg-violet-900/30',
-    ghost: 'text-violet-600 hover:bg-violet-50 dark:hover:bg-violet-900/30',
-    gradient: 'bg-gradient-to-r from-violet-500 to-violet-600 hover:from-violet-600 hover:to-violet-700 text-white shadow-md hover:shadow-lg active:shadow-sm'
+    solid: 'bg-violet-500 hover:bg-violet-600 text-white shadow-md hover:shadow-lg active:shadow-sm',
+    outline: 'border-2 border-violet-500 text-violet-500 hover:bg-violet-50 dark:hover:bg-violet-900/30',
+    ghost: 'text-violet-500 hover:bg-violet-50 dark:hover:bg-violet-900/30',
+    gradient: 'bg-gradient-to-r from-violet-400 to-violet-500 hover:from-violet-500 hover:to-violet-600 text-white shadow-md hover:shadow-lg active:shadow-sm'
   },
+  // Functional colors
   success: {
     base: 'inline-flex items-center justify-center rounded-lg font-medium transition-all',
     solid: 'bg-green-600 hover:bg-green-700 text-white shadow-md hover:shadow-lg active:shadow-sm',
@@ -270,6 +294,52 @@ export const gradientText = (from, to) => {
   return `bg-gradient-to-r from-${from} to-${to} bg-clip-text text-transparent`;
 };
 
+// Typography system - Updated for rebranding
+// Aligned with brand-strategy.js
+export const typography = {
+  fontFamily: {
+    heading: 'Poppins, sans-serif',
+    subheading: 'Manrope, sans-serif',
+    body: 'Manrope, sans-serif',
+  },
+  fontWeight: {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+  },
+  fontSize: {
+    xs: '0.75rem',     // 12px
+    sm: '0.875rem',    // 14px
+    base: '1rem',      // 16px
+    lg: '1.125rem',    // 18px
+    xl: '1.25rem',     // 20px
+    '2xl': '1.5rem',   // 24px
+    '3xl': '1.875rem', // 30px
+    '4xl': '2.25rem',  // 36px
+    '5xl': '3rem',     // 48px
+    '6xl': '3.75rem',  // 60px
+  },
+  lineHeight: {
+    none: 1,
+    tight: 1.25,
+    snug: 1.375,
+    normal: 1.5,
+    relaxed: 1.625,
+    loose: 2,
+  },
+  letterSpacing: {
+    tighter: '-0.05em',
+    tight: '-0.025em',
+    normal: '0',
+    wide: '0.025em',
+    wider: '0.05em',
+    widest: '0.1em',
+  },
+};
+
 // Export default theme object
 export default {
   colors,
@@ -282,6 +352,7 @@ export default {
   cardStyles,
   buttonStyles,
   sizes,
+  typography,
   cx,
   getColor,
   gradientText

@@ -98,7 +98,7 @@ const AboutClosing = () => {
               <span className="relative inline-block ml-2">
                 Empowering Lives
                 <motion.div 
-                  className="absolute bottom-1 left-0 h-3 bg-green-400/30 w-full -z-10"
+                  className="absolute bottom-1 left-0 h-3 bg-green/60 w-full -z-10"
                   initial={{ width: 0 }}
                   animate={{ width: "100%" }}
                   transition={{ delay: 1, duration: 0.8 }}
@@ -176,7 +176,7 @@ const AboutClosing = () => {
               onClick={handleGetStarted}
               onMouseEnter={() => setHoverButton("start")}
               onMouseLeave={() => setHoverButton(null)}
-              className="relative px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium rounded-full group overflow-hidden shadow-lg"
+              className="relative px-8 py-4 bg-gradient-to-r from-green/50 to-emerald-600 text-white font-medium rounded-full group overflow-hidden shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -191,7 +191,7 @@ const AboutClosing = () => {
                 </motion.div>
               </span>
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-green-600 to-emerald-700"
+                className="absolute inset-0 bg-gradient-to-r from-green/60 to-emerald-700"
                 initial={{ x: "100%" }}
                 animate={hoverButton === "start" ? { x: 0 } : { x: "100%" }}
                 transition={{ duration: 0.4 }}

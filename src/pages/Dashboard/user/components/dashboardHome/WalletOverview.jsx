@@ -161,7 +161,7 @@ const WalletOverview = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.5, type: "spring" }}
-            className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg"
+            className="p-3 bg-gradient-to-br from-blue-500 to-violet-600 rounded-full shadow-lg"
           >
             <FaWallet className="text-white text-2xl md:text-3xl" />
           </motion.div>
@@ -194,7 +194,7 @@ const WalletOverview = () => {
       {/* Balance card with 3D effect */}
       <motion.div 
         variants={childVariants}
-        className="mt-6 md:mt-8 bg-gradient-to-br from-blue-500 to-purple-600 p-6 rounded-2xl shadow-lg relative overflow-hidden"
+        className="mt-6 md:mt-8 bg-gradient-to-br from-blue-500 to-violet-600 p-6 rounded-2xl shadow-lg relative overflow-hidden"
         style={{ 
           transformStyle: "preserve-3d",
           perspective: "1000px"

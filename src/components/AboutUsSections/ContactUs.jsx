@@ -202,7 +202,7 @@ const ContactUs = ({ autoFocus = false }) => {
         </motion.div>
 
         {/* Tab Navigation */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

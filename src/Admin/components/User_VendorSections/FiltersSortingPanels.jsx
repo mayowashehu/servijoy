@@ -512,11 +512,11 @@ const FiltersSortingPanel = ({ onFiltersChange, initialFilters = {}, className =
             </div>
           )}
           {filters.sortBy && (
-            <div className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 px-3 py-1 rounded-full text-sm flex items-center gap-1">
+            <div className="bg-violet-100 dark:bg-violet-900 text-violet-800 dark:text-violet-200 px-3 py-1 rounded-full text-sm flex items-center gap-1">
               <span>Sort: {filters.sortBy} ({filters.sortDirection === "asc" ? "↑" : "↓"})</span>
               <button
                 onClick={() => setFilters(prev => ({ ...prev, sortBy: "" }))}
-                className="text-purple-600 dark:text-purple-300 hover:text-purple-800 dark:hover:text-purple-100"
+                className="text-violet-600 dark:text-violet-300 hover:text-violet-800 dark:hover:text-violet-100"
               >
                 <FaTimes size={12} />
               </button>

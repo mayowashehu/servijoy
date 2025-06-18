@@ -222,7 +222,7 @@ const PaymentWallet = () => {
     >
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-8">
         <motion.div variants={itemVariants} className="flex items-center gap-4 mb-4 md:mb-0">
-          <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-lg">
+          <div className="p-3 bg-gradient-to-br from-blue-500 to-violet-600 rounded-full shadow-lg">
             <FaWallet className="text-white text-2xl" />
           </div>
           <div>

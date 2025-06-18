@@ -167,13 +167,13 @@ const BookingFilters = ({ onFilterChange, initialFilters = {} }) => {
       
       <div className="flex justify-between items-center mb-5">
         <div className="flex items-center gap-3">
-          <span className="bg-gradient-to-r from-purple-600 to-indigo-600 p-2 rounded-lg shadow-md">
+          <span className="bg-gradient-to-r from-violet-600 to-indigo-600 p-2 rounded-lg shadow-md">
             <FaFilter className="text-white text-lg" />
           </span>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white tracking-tight">
             Filter Bookings
             {activeFiltersCount > 0 && (
-              <Badge className="ml-2 bg-purple-600 text-white text-xs py-1">
+              <Badge className="ml-2 bg-violet-600 text-white text-xs py-1">
                 {activeFiltersCount} active
               </Badge>
             )}
@@ -227,7 +227,7 @@ const BookingFilters = ({ onFilterChange, initialFilters = {} }) => {
                     id="status-filter"
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
-                    className="select select-bordered w-full pl-4 pr-10 py-2.5 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 dark:focus:ring-purple-600 dark:focus:border-purple-600 shadow-sm transition-all duration-200"
+                    className="select select-bordered w-full pl-4 pr-10 py-2.5 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 dark:focus:ring-violet-600 dark:focus:border-violet-600 shadow-sm transition-all duration-200"
                   >
                     <option value="all">All Statuses</option>
                     <option value="pending">Pending</option>
@@ -359,7 +359,7 @@ const BookingFilters = ({ onFilterChange, initialFilters = {} }) => {
                     </span>
                     
                     {status !== "all" && (
-                      <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 flex items-center gap-1.5 py-1 pl-2 pr-1.5">
+                      <Badge className="bg-violet-100 text-violet-800 dark:bg-violet-900 dark:text-violet-200 flex items-center gap-1.5 py-1 pl-2 pr-1.5">
                         Status: {status.charAt(0).toUpperCase() + status.slice(1)}
                         <button
                           onClick={() => setStatus("all")}

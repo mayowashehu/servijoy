@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiMenu, FiX, FiChevronDown, FiUser, FiLogIn } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import LogoSVG from "../assets/logo-icon.svg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,13 +84,8 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="font-header font-bold text-3xl relative z-10">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-teal-500 group-hover:from-blue-700 group-hover:to-teal-600 transition-all duration-300">
-                Servi
-              </span>
-              <span className="text-gray-800">Joy</span>
-              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600/0 via-blue-600/50 to-teal-500/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </h1>
+            <img src={LogoSVG} alt="ServiJoy Logo" className="h-10 w-auto" />
+            <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-blue-600/0 via-blue-600/50 to-teal-500/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
           </motion.div>
         </Link>
 

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
+import LogoSVG from "../assets/logo.svg";
+import LogoIconSVG from "../assets/logo-icon.svg";
 
 const Footer = () => {
   const { user, login } = useAuth();
@@ -17,9 +19,7 @@ const Footer = () => {
         
         {/* Footer Logo and Tagline */}
         <div className="flex flex-col items-center mb-12">
-          <h2 className="text-3xl font-header font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-400">
-            ServiJoy
-          </h2>
+          <img src={LogoSVG} alt="ServiJoy" className="h-12 w-auto mb-2" />
           <p className="text-gray-300 mt-3 text-center max-w-md">
             Connecting you with trusted service providers effortlessly.
           </p>
@@ -49,7 +49,7 @@ const Footer = () => {
           
           {/* About Section */}
           <div>
-            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-blue-500">
+            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-green-500 after:to-blue-500">
               About
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -59,7 +59,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-blue-500">
+            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-green-500 after:to-blue-500">
               Quick Links
             </h3>
             <ul className="grid grid-cols-2 gap-2">
@@ -75,7 +75,7 @@ const Footer = () => {
                     to={link.path} 
                     className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center text-sm"
                   >
-                    <span className="text-blue-400 mr-2">›</span>
+                    <span className="text-green-500 mr-2">›</span>
                     {link.name}
                   </Link>
                 </li>
@@ -85,14 +85,14 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-blue-500">
+            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-green-500 after:to-blue-500">
               Contact Us
             </h3>
             <ul className="space-y-4">
               {[
-                { icon: <FaMapMarkerAlt />, text: "Ilorin, Nigeria", color: "text-blue-400" },
-                { icon: <FaEnvelope />, text: "support@servijoy.com", color: "text-teal-400" },
-                { icon: <FaPhone />, text: "+234 800 000 0000", color: "text-green-400" }
+                { icon: <FaMapMarkerAlt />, text: "Ilorin, Nigeria", color: "text-blue-500" },
+                { icon: <FaEnvelope />, text: "support@servijoy.com", color: "text-green-500" },
+                { icon: <FaPhone />, text: "+234 800 000 0000", color: "text-violet-500" }
               ].map((contact, index) => (
                 <li key={index} className="flex items-center text-sm">
                   <span className={`${contact.color} mr-3`}>{contact.icon}</span>
@@ -104,7 +104,7 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-blue-500">
+            <h3 className="text-lg font-semibold text-white relative pb-3 mb-4 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-1 after:bg-gradient-to-r after:from-green-500 after:to-blue-500">
               Newsletter
             </h3>
             <p className="text-gray-400 text-sm mb-4">
@@ -118,7 +118,7 @@ const Footer = () => {
               />
               <button 
                 type="submit" 
-                className="bg-gradient-to-r from-blue-500 to-teal-400 hover:from-blue-600 hover:to-teal-500 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300"
+                className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300"
               >
                 Subscribe
               </button>

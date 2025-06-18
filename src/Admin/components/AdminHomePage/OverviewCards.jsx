@@ -24,8 +24,8 @@ const cardData = [
   {
     title: "Total Revenue",
     value: "$1,234,567",
-    icon: <FaDollarSign className="text-purple-500 dark:text-purple-400 text-4xl" />,
-    bgColor: "bg-purple-100 dark:bg-purple-800",
+    icon: <FaDollarSign className="text-violet-500 dark:text-violet-400 text-4xl" />,
+    bgColor: "bg-violet-100 dark:bg-violet-800",
   },
 ];
 

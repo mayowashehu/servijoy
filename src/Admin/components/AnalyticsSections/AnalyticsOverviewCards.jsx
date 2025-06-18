@@ -39,8 +39,8 @@ const AnalyticsOverviewCards = () => {
       icon: <DollarSign size={20} />, 
       trend: 8.2,
       trendText: "vs last month",
-      bgClass: "bg-gradient-to-br from-purple-500 to-purple-600",
-      hoverClass: "hover:from-purple-600 hover:to-purple-700"
+      bgClass: "bg-gradient-to-br from-violet-500 to-violet-600",
+      hoverClass: "hover:from-violet-600 hover:to-violet-700"
     },
     { 
       title: "Total Orders", 

@@ -159,7 +159,7 @@ const WelcomeSection = () => {
 
   // Gradient background variants
   const gradientVariants = {
-    light: "bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500",
+    light: "bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500",
     dark: "dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-700"
   };
 

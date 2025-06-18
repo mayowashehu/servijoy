@@ -11,7 +11,7 @@ const RecentActivities = () => {
   const activityTypes = {
     signup: { icon: UserPlus, color: "text-blue-500", bg: "bg-blue-100" },
     approval: { icon: FileCheck, color: "text-green-500", bg: "bg-green-100" },
-    transaction: { icon: CreditCard, color: "text-purple-500", bg: "bg-purple-100" },
+    transaction: { icon: CreditCard, color: "text-violet-500", bg: "bg-violet-100" },
     dispute: { icon: AlertCircle, color: "text-red-500", bg: "bg-red-100" }
   };
 

@@ -82,19 +82,19 @@ const AboutMission = () => {
     { 
       icon: FaHandshake, 
       title: "Trust & Integrity", 
-      color: "from-green/40 to-emerald-600",
+      color: "from-green/50 to-blue-500",
       description: "We build lasting relationships founded on transparency and honesty with every interaction."
     },
     { 
       icon: FaRocket, 
       title: "Innovation & Growth", 
-      color: "from-blue-400 to-indigo-600",
+      color: "from-blue-500 to-violet-500",
       description: "We constantly evolve our platform to deliver cutting-edge solutions that empower service providers."
     },
     { 
       icon: FaGlobe, 
       title: "Global Impact", 
-      color: "from-gray-700 to-gray-900",
+      color: "from-violet-500 to-green/50",
       description: "We're creating a worldwide community that transcends borders to connect services globally."
     },
   ];
@@ -133,7 +133,7 @@ const AboutMission = () => {
           <h2 className="text-3xl md:text-4xl font-bold mt-2 relative inline-block">
             Our Mission & Vision
             <motion.div 
-              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-green/40 to-blue-500 rounded-full" 
+              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-green/50 to-blue-500 rounded-full" 
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
               transition={{ delay: 0.6, duration: 0.8 }}

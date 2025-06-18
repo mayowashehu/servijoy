@@ -40,7 +40,7 @@ const services = [
     id: 5, 
     name: "Moving Services", 
     icon: <FaTruckMoving />, 
-    color: "from-purple-400 to-violet-600", // Purple remains unchanged
+    color: "from-violet-400 to-violet-600", // Updated for rebranding
     description: "Reliable moving services to make relocation easy",
     route: "/service/moving"
   },

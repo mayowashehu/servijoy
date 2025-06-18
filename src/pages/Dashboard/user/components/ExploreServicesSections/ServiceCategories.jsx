@@ -11,7 +11,7 @@ const categories = [
   { name: "Repairs", icon: <FaWrench />, color: "bg-red-500" },
   { name: "Moving", icon: <FaTruckMoving />, color: "bg-green/50" },
   { name: "Electrical", icon: <FaBolt />, color: "bg-yellow-500" },
-  { name: "Painting", icon: <FaPaintRoller />, color: "bg-purple-500" },
+  { name: "Painting", icon: <FaPaintRoller />, color: "bg-violet-500" },
   { name: "Landscaping", icon: <FaTree />, color: "bg-teal-500" },
   { name: "Catering", icon: <FaUtensils />, color: "bg-orange-500" },
   { name: "Tech Support", icon: <FaLaptop />, color: "bg-indigo-500" },

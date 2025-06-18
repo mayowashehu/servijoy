@@ -479,9 +479,9 @@ const UsersVendorsTable = () => {
             {data.filter(u => u.role === "User").length}
           </p>
         </div>
-        <div className="bg-purple-50 dark:bg-purple-900/30 p-3 rounded-lg">
-          <p className="text-purple-800 dark:text-purple-300 text-sm">Vendors</p>
-          <p className="text-xl font-semibold text-purple-900 dark:text-purple-200">
+        <div className="bg-violet-50 dark:bg-violet-900/30 p-3 rounded-lg">
+          <p className="text-violet-800 dark:text-violet-300 text-sm">Vendors</p>
+          <p className="text-xl font-semibold text-violet-900 dark:text-violet-200">
             {data.filter(u => u.role === "Vendor").length}
           </p>
         </div>
@@ -606,7 +606,7 @@ const UsersVendorsTable = () => {
                       <div className="text-sm text-gray-900 dark:text-gray-200">{user.email}</div>
                     </td>
                     <td className="px-3 py-4 whitespace-nowrap">
-                      <div className={`text-sm ${user.role === "Vendor" ? "text-purple-600 dark:text-purple-400" : "text-blue-600 dark:text-blue-400"}`}>
+                      <div className={`text-sm ${user.role === "Vendor" ? "text-violet-600 dark:text-violet-400" : "text-blue-600 dark:text-blue-400"}`}>
                         {user.role}
                         {user.transactions > 0 && (
                           <div className="text-xs text-gray-500 dark:text-gray-400">

@@ -127,7 +127,7 @@ const VendorWelcome = () => {
       label: "Performance", 
       description: "Track your growth",
       path: "/dashboard/analytics",
-      color: "from-purple-400 to-purple-500",
+      color: "from-violet-400 to-violet-500",
       emptyMessage: "Start building your performance"
     }
   ];

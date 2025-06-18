@@ -49,10 +49,10 @@ const HowItWorksVendor = () => {
       icon: <FaBriefcase className="text-3xl sm:text-4xl" />,
       title: "Get Hired & Work",
       description: "Users book your services, you complete tasks, and earn money.",
-      color: "from-purple to-violet", // updated
-      bgColor: "bg-purple/10",         // updated
-      borderColor: "border-purple/20", // updated
-      iconColor: "text-purple",        // updated
+      color: "from-violet to-purple", // updated for rebranding
+      bgColor: "bg-violet/10",         // updated for rebranding
+      borderColor: "border-violet/20", // updated for rebranding
+      iconColor: "text-violet",        // updated for rebranding
       detailedSteps: [
         "Receive job requests from clients",
         "Accept bookings that fit your schedule",

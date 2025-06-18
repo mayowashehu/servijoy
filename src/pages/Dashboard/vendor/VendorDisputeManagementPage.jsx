@@ -128,7 +128,7 @@ const VendorDisputeManagement = () => {
             <div className="flex items-center">
               <button
                 onClick={toggleEmptyState}
-                className="text-xs px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors duration-200"
+                className="text-xs px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700 transition-colors duration-200"
               >
                 {showEmptyState ? "Show Sample Data" : "Show Empty State"}
               </button>
@@ -193,8 +193,8 @@ const VendorDisputeManagement = () => {
           </div>
           <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md">
             <div className="flex items-center">
-              <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center mr-3">
-                <FaSpinner className="text-purple-600 dark:text-purple-400" />
+              <div className="w-10 h-10 rounded-full bg-violet-100 dark:bg-violet-900 flex items-center justify-center mr-3">
+                <FaSpinner className="text-violet-600 dark:text-violet-400" />
               </div>
               <div>
                 <p className="text-sm text-gray-500 dark:text-gray-400">In Progress</p>
