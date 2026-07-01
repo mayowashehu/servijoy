@@ -109,25 +109,25 @@ const ContactUs = ({ autoFocus = false }) => {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-full py-24 bg-gradient-to-b from-white to-gray-50 text-center text-black relative overflow-hidden"
+      className="w-full py-24 bg-elite-black text-center relative overflow-hidden"
     >
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-green/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
+      <div className="absolute inset-0 elite-glow-top pointer-events-none"></div>
       
       <div className="container mx-auto px-6 lg:px-20 relative z-10">
-        {/* Heading with animated underline */}
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-green bg-clip-text text-transparent">
-            Get in Touch with Us
+          <p className="text-elite-cyan text-sm font-semibold uppercase tracking-widest mb-3">
+            Support
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold font-header text-white mb-2">
+            We're Here for <span className="text-elite-cyan">You</span>
           </h2>
-          <div className="h-1.5 w-24 bg-gradient-to-r from-blue-600 to-green rounded-full mx-auto mt-4"></div>
-          <p className="text-lg text-gray-600 mt-6 max-w-3xl mx-auto">
+          <p className="text-lg text-elite-muted mt-4 max-w-3xl mx-auto">
             Have questions, feedback, or need support? Reach out to us and we'll be happy to assist you.
           </p>
         </motion.div>
@@ -137,24 +137,24 @@ const ContactUs = ({ autoFocus = false }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-12"
         >
           {[
-            { icon: <Mail className="w-6 h-6" />, title: "Email", content: "support@servijoy.com", action: "mailto:support@servijoy.com" },
-            { icon: <MapPin className="w-6 h-6" />, title: "Address", content: "Ilorin, Nigeria", action: "#location" },
-            { icon: <Phone className="w-6 h-6" />, title: "Phone", content: "+234 123 456 7890", action: "tel:+2341234567890" }
+            { icon: <Mail className="w-5 h-5" />, title: "Email", content: "support@servijoy.com", action: "mailto:support@servijoy.com" },
+            { icon: <MapPin className="w-5 h-5" />, title: "Address", content: "Ilorin, Nigeria", action: "#location" },
+            { icon: <Phone className="w-5 h-5" />, title: "Phone", content: "+234 123 456 7890", action: "tel:+2341234567890" }
           ].map((item, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
-              className="bg-white rounded-xl shadow-lg p-6 transform transition-all duration-300"
+              whileHover={{ y: -4 }}
+              className="elite-card p-6 transform transition-all duration-300"
             >
               <div className="flex flex-col items-center">
-                <div className="bg-gradient-to-br from-blue-500 to-green text-white p-4 rounded-full mb-4">
+                <div className="bg-elite-cyan/10 border border-elite-cyan/20 text-elite-cyan p-3 rounded-full mb-4">
                   {item.icon}
                 </div>
-                <h4 className="text-xl font-semibold mb-2">{item.title}</h4>
-                <p className="text-gray-600">{item.content}</p>
+                <h4 className="text-lg font-semibold text-white mb-1">{item.title}</h4>
+                <p className="text-elite-muted text-sm">{item.content}</p>
                 <a 
                   href={item.action}
                   onClick={item.title === "Address" ? (e) => {
@@ -162,7 +162,7 @@ const ContactUs = ({ autoFocus = false }) => {
                     handleShowMap();
                     setActiveTab("location");
                   } : undefined}
-                  className="mt-4 text-blue-600 hover:text-blue-800 font-medium flex items-center"
+                  className="mt-3 text-elite-cyan hover:brightness-110 font-medium flex items-center text-sm"
                 >
                   {item.title === "Email" ? "Send Email" : 
                    item.title === "Address" ? "View on Map" : "Call Now"}
@@ -180,7 +180,7 @@ const ContactUs = ({ autoFocus = false }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-center gap-4 mb-12"
+          className="flex justify-center gap-3 mb-12"
         >
           {socialLinks.map((social, index) => (
             <motion.a
@@ -188,7 +188,7 @@ const ContactUs = ({ autoFocus = false }) => {
               href="#"
               whileHover={{ y: -3, scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className={`${social.color} text-white p-3 rounded-full shadow-lg`}
+              className="bg-elite-card border border-elite-border text-elite-muted hover:text-elite-cyan hover:border-elite-cyan/30 p-3 rounded-full transition-colors"
             >
               <span className="sr-only">{social.name}</span>
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -209,23 +209,23 @@ const ContactUs = ({ autoFocus = false }) => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex justify-center mb-8"
           >
-            <div className="inline-flex bg-gray-100 p-1 rounded-lg">
+            <div className="inline-flex bg-elite-card border border-elite-border p-1 rounded-full">
               <button
                 onClick={() => setActiveTab("form")}
-                className={`px-4 py-2 rounded-md transition-all ${
+                className={`px-5 py-2 rounded-full transition-all text-sm ${
                   activeTab === "form" 
-                    ? "bg-white text-blue-600 shadow-md" 
-                    : "text-gray-600 hover:text-gray-800"
+                    ? "bg-elite-cyan text-black font-semibold" 
+                    : "text-elite-muted hover:text-white"
                 }`}
               >
                 Contact Form
               </button>
               <button
                 onClick={() => setActiveTab("faq")}
-                className={`px-4 py-2 rounded-md transition-all ${
+                className={`px-5 py-2 rounded-full transition-all text-sm ${
                   activeTab === "faq" 
-                    ? "bg-white text-blue-600 shadow-md" 
-                    : "text-gray-600 hover:text-gray-800"
+                    ? "bg-elite-cyan text-black font-semibold" 
+                    : "text-elite-muted hover:text-white"
                 }`}
               >
                 FAQs
@@ -235,10 +235,10 @@ const ContactUs = ({ autoFocus = false }) => {
                   setActiveTab("location");
                   handleShowMap();
                 }}
-                className={`px-4 py-2 rounded-md transition-all ${
+                className={`px-5 py-2 rounded-full transition-all text-sm ${
                   activeTab === "location" 
-                    ? "bg-white text-blue-600 shadow-md" 
-                    : "text-gray-600 hover:text-gray-800"
+                    ? "bg-elite-cyan text-black font-semibold" 
+                    : "text-elite-muted hover:text-white"
                 }`}
               >
                 Our Location
@@ -257,13 +257,13 @@ const ContactUs = ({ autoFocus = false }) => {
                 transition={{ duration: 0.3 }}
                 className="max-w-2xl mx-auto"
               >
-                <div className="bg-white p-8 rounded-2xl shadow-xl">
+                <div className="elite-card p-8">
                   <div className="flex flex-col md:flex-row gap-6 items-center">
-                    <div className="w-full md:w-1/3">
+                    <div className="w-full md:w-1/3 hidden md:block">
                       <AdvancedContactAnimation />
                     </div>
                     <div className="w-full md:w-2/3">
-                      <h3 className="text-2xl font-bold mb-4 text-gray-800">Send Us a Message</h3>
+                      <h3 className="text-2xl font-bold mb-4 text-white">Send Us a Message</h3>
                       
                       <AnimatePresence mode="wait">
                         {formStatus === "success" ? (
@@ -271,14 +271,14 @@ const ContactUs = ({ autoFocus = false }) => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
-                            className="bg-green p-6 rounded-lg border border-green text-center"
+                            className="bg-elite-cyan/10 border border-elite-cyan/20 p-6 rounded-xl text-center"
                           >
-                            <CheckCircle className="w-12 h-12 text-green mx-auto mb-4" />
-                            <h4 className="text-xl font-semibold text-green mb-2">Message Sent Successfully!</h4>
-                            <p className="text-green mb-4">Thank you for reaching out. We'll get back to you shortly.</p>
+                            <CheckCircle className="w-12 h-12 text-elite-cyan mx-auto mb-4" />
+                            <h4 className="text-xl font-semibold text-white mb-2">Message Sent Successfully!</h4>
+                            <p className="text-elite-muted mb-4">Thank you for reaching out. We'll get back to you shortly.</p>
                             <button
                               onClick={resetForm}
-                              className="px-4 py-2 bg-green text-white rounded-md hover:bg-green transition-colors"
+                              className="px-6 py-2.5 bg-elite-cyan text-black rounded-full font-semibold hover:brightness-110 transition-colors"
                             >
                               Send Another Message
                             </button>
@@ -288,14 +288,14 @@ const ContactUs = ({ autoFocus = false }) => {
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.8 }}
-                            className="bg-red-50 p-6 rounded-lg border border-red-100 text-center"
+                            className="bg-red-500/10 border border-red-500/20 p-6 rounded-xl text-center"
                           >
-                            <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
-                            <h4 className="text-xl font-semibold text-red-800 mb-2">Something went wrong</h4>
-                            <p className="text-red-700 mb-4">Please try again or contact us directly at support@servijoy.com</p>
+                            <AlertCircle className="w-12 h-12 text-red-400 mx-auto mb-4" />
+                            <h4 className="text-xl font-semibold text-white mb-2">Something went wrong</h4>
+                            <p className="text-elite-muted mb-4">Please try again or contact us directly at support@servijoy.com</p>
                             <button
                               onClick={resetForm}
-                              className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors"
+                              className="px-6 py-2.5 bg-red-500 text-white rounded-full font-semibold hover:bg-red-600 transition-colors"
                             >
                               Try Again
                             </button>
@@ -318,13 +318,13 @@ const ContactUs = ({ autoFocus = false }) => {
                                   value={formState.name}
                                   onChange={handleInputChange}
                                   placeholder="Your Name"
-                                  className={`w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
+                                  className={`w-full p-3 pl-10 border rounded-xl bg-elite-black text-white focus:outline-none focus:ring-1 transition-all ${
                                     formErrors.name 
-                                      ? "border-red-300 focus:ring-red-200 bg-red-50"
-                                      : "border-gray-300 focus:ring-blue-200 focus:border-blue-400"
+                                      ? "border-red-500/50 focus:ring-red-500/30"
+                                      : "border-elite-border focus:ring-elite-cyan/30 focus:border-elite-cyan/50"
                                   }`}
                                 />
-                                <span className="absolute left-3 top-3.5 text-gray-400">
+                                <span className="absolute left-3 top-3.5 text-elite-muted">
                                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                   </svg>
@@ -349,13 +349,13 @@ const ContactUs = ({ autoFocus = false }) => {
                                   value={formState.email}
                                   onChange={handleInputChange}
                                   placeholder="Your Email"
-                                  className={`w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
+                                  className={`w-full p-3 pl-10 border rounded-xl bg-elite-black text-white focus:outline-none focus:ring-1 transition-all ${
                                     formErrors.email 
-                                      ? "border-red-300 focus:ring-red-200 bg-red-50"
-                                      : "border-gray-300 focus:ring-blue-200 focus:border-blue-400"
+                                      ? "border-red-500/50 focus:ring-red-500/30"
+                                      : "border-elite-border focus:ring-elite-cyan/30 focus:border-elite-cyan/50"
                                   }`}
                                 />
-                                <span className="absolute left-3 top-3.5 text-gray-400">
+                                <span className="absolute left-3 top-3.5 text-elite-muted">
                                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                   </svg>
@@ -380,13 +380,13 @@ const ContactUs = ({ autoFocus = false }) => {
                                   value={formState.message}
                                   onChange={handleInputChange}
                                   placeholder="Your Message"
-                                  className={`w-full p-3 pl-10 border rounded-lg focus:outline-none focus:ring-2 transition-all ${
+                                  className={`w-full p-3 pl-10 border rounded-xl bg-elite-black text-white focus:outline-none focus:ring-1 transition-all ${
                                     formErrors.message 
-                                      ? "border-red-300 focus:ring-red-200 bg-red-50"
-                                      : "border-gray-300 focus:ring-blue-200 focus:border-blue-400"
+                                      ? "border-red-500/50 focus:ring-red-500/30"
+                                      : "border-elite-border focus:ring-elite-cyan/30 focus:border-elite-cyan/50"
                                   }`}
                                 ></textarea>
-                                <span className="absolute left-3 top-3.5 text-gray-400">
+                                <span className="absolute left-3 top-3.5 text-elite-muted">
                                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
                                   </svg>
@@ -408,7 +408,7 @@ const ContactUs = ({ autoFocus = false }) => {
                               whileTap={{ scale: 0.98 }}
                               type="submit"
                               disabled={formStatus === "loading"}
-                              className="w-full p-3 bg-gradient-to-r from-blue-600 to-green text-white rounded-lg font-medium flex items-center justify-center transition-all hover:shadow-lg disabled:opacity-70"
+                              className="w-full p-3.5 bg-white text-black rounded-full font-bold flex items-center justify-center transition-all hover:bg-gray-100 disabled:opacity-70"
                             >
                               {formStatus === "loading" ? (
                                 <>
@@ -438,10 +438,10 @@ const ContactUs = ({ autoFocus = false }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl"
+                className="max-w-2xl mx-auto elite-card p-8"
               >
-                <h3 className="text-2xl font-bold mb-6 text-gray-800">Frequently Asked Questions</h3>
-                <div className="space-y-4">
+                <h3 className="text-2xl font-bold mb-6 text-white">Frequently Asked Questions</h3>
+                <div className="space-y-3">
                   {[
                     { question: "How quickly will I receive a response?", answer: "We typically respond to all inquiries within 24 hours during business days." },
                     { question: "Do you offer phone support?", answer: "Yes, our support team is available by phone during business hours (9 AM - 5 PM local time)." },
@@ -453,10 +453,10 @@ const ContactUs = ({ autoFocus = false }) => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="bg-gray-50 p-4 rounded-lg"
+                      className="bg-elite-black/50 border border-elite-border p-4 rounded-xl"
                     >
-                      <h4 className="font-semibold text-lg text-gray-800 mb-2">{faq.question}</h4>
-                      <p className="text-gray-600">{faq.answer}</p>
+                      <h4 className="font-semibold text-white mb-2">{faq.question}</h4>
+                      <p className="text-elite-muted text-sm">{faq.answer}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -470,10 +470,10 @@ const ContactUs = ({ autoFocus = false }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl"
+                className="max-w-2xl mx-auto elite-card p-8"
               >
-                <h3 className="text-2xl font-bold mb-6 text-gray-800">Our Location</h3>
-                <div className="rounded-lg overflow-hidden shadow-lg border border-gray-200 h-80 bg-gray-100">
+                <h3 className="text-2xl font-bold mb-6 text-white">Our Location</h3>
+                <div className="rounded-xl overflow-hidden border border-elite-border h-80 bg-elite-black">
                   {mapVisible ? (
                     // Map iframe
                     <iframe 
@@ -489,7 +489,7 @@ const ContactUs = ({ autoFocus = false }) => {
                     <div className="flex items-center justify-center h-full">
                       <button 
                         onClick={handleShowMap}
-                        className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors flex items-center gap-2"
+                        className="px-6 py-3 bg-elite-cyan text-black rounded-full font-semibold hover:brightness-110 transition-colors flex items-center gap-2"
                       >
                         <MapPin className="w-5 h-5" />
                         Load Map
@@ -498,10 +498,10 @@ const ContactUs = ({ autoFocus = false }) => {
                   )}
                 </div>
                 <div className="mt-6 text-center">
-                  <h4 className="font-semibold mb-2">Business Hours</h4>
-                  <p className="text-gray-600">Monday - Friday: 9 AM - 5 PM</p>
-                  <p className="text-gray-600">Saturday: 10 AM - 2 PM</p>
-                  <p className="text-gray-600">Sunday: Closed</p>
+                  <h4 className="font-semibold text-white mb-2">Business Hours</h4>
+                  <p className="text-elite-muted text-sm">Monday - Friday: 9 AM - 5 PM</p>
+                  <p className="text-elite-muted text-sm">Saturday: 10 AM - 2 PM</p>
+                  <p className="text-elite-muted text-sm">Sunday: Closed</p>
                 </div>
               </motion.div>
             )}
@@ -509,10 +509,8 @@ const ContactUs = ({ autoFocus = false }) => {
         </div>
       </div>
 
-      {/* Bottom Wave */}
-      <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" clipRule="evenodd" d="M0 0L60 10C120 20 240 40 360 50C480 60 600 60 720 50C840 40 960 20 1080 15C1200 10 1320 20 1380 25L1440 30V100H1380C1320 100 1200 100 1080 100C960 100 840 100 720 100C600 100 480 100 360 100C240 100 120 100 60 100H0V0Z" fill="#F3F4F6" />
-      </svg>
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-elite-border"></div>
     </motion.section>
   );
 };

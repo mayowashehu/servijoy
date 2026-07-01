@@ -1,18 +1,18 @@
 import React from 'react'
 import HowItWorksHero from '../components/HowItWorksSection/HowItWorkHero'
 import HowItWorksSteps from '../components/HowItWorksSection/HowItWorkSteps'
-import TestimonialsSection from '../components/HomeSections/TestimonialsSection'
-import FAQ from '../components/FAQ'
-import ContactUs from '../components/AboutUsSections/ContactUs'
+import EfficiencySection from '../components/HowItWorksSection/EfficiencySection'
+import VettedSection from '../components/HowItWorksSection/VettedSection'
+import HowItWorksCTA from '../components/HowItWorksSection/HowItWorksCTA'
 
 const HowItWorksPage = () => {
   return (
-    <main className=''>
+    <main className="bg-elite-black min-h-screen">
       <HowItWorksHero />
-    <HowItWorksSteps />
-    { /* <FAQ /> */}
-    <TestimonialsSection />
-    <ContactUs />
+      <HowItWorksSteps />
+      <EfficiencySection />
+      <VettedSection />
+      <HowItWorksCTA />
     </main>
   )
 }

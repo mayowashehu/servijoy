@@ -1,163 +1,106 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaUserCheck, FaStar, FaMoneyBillWave, FaClock } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { TrendingUp } from "lucide-react";
 import OptimizedImage from "../OptimizedImage";
-import { useNavigate } from "react-router-dom";
+import vendorImg from "../../assets/imgs/plumbing (2).webp";
 
 const BecomeVendorHero = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const navigate = useNavigate();
-  
-  const benefits = [
-    { icon: <FaMoneyBillWave />, text: "Earn More" },
-    { icon: <FaClock />, text: "Flexible Hours" },
-    { icon: <FaStar />, text: "Build Your Reputation" }
-  ];
-
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
-  };
-
-  const childVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  const [partnerToggle, setPartnerToggle] = useState(true);
 
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-r from-gray-900 to-black py-24 px-4 sm:px-6 lg:px-12">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-black/70 z-0"></div>
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green/10 to-transparent z-0"></div>
-      <div className="absolute inset-0 bg-[url('/subtle-pattern.png')] opacity-10 z-0"></div>
-      
-      <div className="container mx-auto relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-        {/* Left Content */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full lg:w-1/2 text-center lg:text-left"
-        >
-          <motion.span 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
-            className="inline-block px-4 py-1 rounded-full bg-green/20 text-green text-sm font-medium mb-6"
+    <section className="relative bg-elite-black pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+      <div className="absolute inset-0 elite-glow-top pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+          {/* Left */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            Become a Service Provider
-          </motion.span>
-          
-          <motion.h1 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-header font-bold leading-tight mb-6 text-white"
-          >
-            Earn More. Work Freely.{" "}
-            <span className="block mt-2 bg-gradient-to-r from-green to-teal-300 bg-clip-text text-transparent">
-              Join ServiJoy Today!
+            <span className="inline-block px-4 py-1.5 rounded border border-elite-cyan/40 text-elite-cyan text-xs font-semibold tracking-widest uppercase mb-6">
+              PARTNER WITH THE BEST
             </span>
-          </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="text-base sm:text-lg text-gray-300 max-w-xl mx-auto lg:mx-0 mb-8"
-          >
-            Connect with customers, grow your business, and get paid with ease. 
-            Join a trusted platform that brings real work to real service providers.
-          </motion.p>
-          
-          {/* Benefits */}
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-wrap gap-4 md:gap-6 justify-center lg:justify-start mb-8"
-          >
-            {benefits.map((benefit, index) => (
-              <motion.div 
-                key={index}
-                variants={childVariants}
-                className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2 text-sm sm:text-base"
+
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-header text-white leading-tight mb-5">
+              Turn Your Skills into a{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-elite-cyan to-teal-400">
+                Thriving Business
+              </span>
+            </h1>
+
+            <p className="text-elite-muted text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+              Join 10,000+ top-tier professionals earning more with ServiJoy.
+              We provide the tools, you provide the talent.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <Link
+                to="/login-signup"
+                className="inline-flex justify-center px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all text-sm"
               >
-                <span className="text-green">{benefit.icon}</span>
-                <span className="text-white">{benefit.text}</span>
-              </motion.div>
-            ))}
+                Start as Vendor
+              </Link>
+              <Link
+                to="/how-it-works"
+                className="inline-flex justify-center px-8 py-3.5 border border-elite-border text-white font-medium rounded-full hover:border-elite-cyan/40 transition-all text-sm"
+              >
+                Learn More
+              </Link>
+            </div>
+
+            <label className="flex items-center gap-3 cursor-pointer group">
+              <button
+                type="button"
+                role="switch"
+                aria-checked={partnerToggle}
+                onClick={() => setPartnerToggle(!partnerToggle)}
+                className={`relative w-11 h-6 rounded-full transition-colors flex-shrink-0 ${
+                  partnerToggle ? "bg-elite-cyan" : "bg-elite-border"
+                }`}
+              >
+                <span
+                  className={`absolute top-0.5 w-5 h-5 bg-white rounded-full transition-transform ${
+                    partnerToggle ? "left-[22px]" : "left-0.5"
+                  }`}
+                />
+              </button>
+              <span className="text-elite-muted text-sm group-hover:text-white/80 transition-colors">
+                Partner as professional — unlock the service ecosystem
+              </span>
+            </label>
           </motion.div>
-          
-          {/* CTA Button */}
-          <motion.button 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1, type: "spring" }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group relative overflow-hidden px-8 py-3.5 rounded-lg bg-gradient-to-r from-green to-teal-400 text-white font-medium text-lg flex items-center gap-2 shadow-lg shadow-green/20 hover:shadow-xl hover:shadow-green/30 transition-all duration-300"
+
+          {/* Right visual card */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="relative z-10 flex items-center gap-2">
-              <FaUserCheck className={`text-lg transition-transform duration-300 ${isHovered ? 'rotate-12' : ''}`} />
-              Get Started Now
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-green to-teal-500 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-          </motion.button>
-        </motion.div>
-        
-        {/* Right Side Image/Graphic */}
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-          className="w-full lg:w-1/2 relative"
-        >
-          <div className="relative">
-            {/* Main Image */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="rounded-xl overflow-hidden shadow-2xl shadow-green/10 border border-gray-700/50"
-            >
-              <OptimizedImage 
-                src="../../assets/imgs/carpentry.webp" 
-                alt="Vendor Working" 
-                className="w-full h-auto"
-                rounded="rounded-xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-            </motion.div>
-            
-            {/* Stats Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
-              className="absolute -bottom-5 -left-5 md:bottom-6 md:-left-10 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-xl max-w-[180px] backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90 border border-gray-200 dark:border-gray-700"
-            >
-              <div className="flex items-center gap-2 text-green font-bold text-lg">
-                <FaStar />
-                <span>4.9/5.0</span>
+            <div className="elite-card overflow-hidden border-elite-border">
+              <div className="relative h-64 sm:h-80">
+                <OptimizedImage
+                  src={vendorImg}
+                  alt="Professional vendor"
+                  className="w-full h-full object-cover brightness-75"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
-              <p className="text-gray-800 dark:text-gray-300 text-sm mt-1">From 2,000+ service providers</p>
-            </motion.div>
-            
-            {/* Floating Income Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4 }}
-              className="absolute -top-5 -right-5 md:top-10 md:-right-10 bg-gradient-to-br from-green/90 to-teal-600/90 p-4 rounded-lg shadow-xl backdrop-blur-sm text-white max-w-[180px] border border-green/30"
-            >
-              <p className="font-bold text-lg">+35%</p>
-              <p className="text-sm mt-1">Average monthly income increase</p>
-            </motion.div>
-          </div>
-        </motion.div>
+              <div className="p-5 flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-elite-muted text-xs mb-1">Creativity, Knowledge, Tools</p>
+                  <p className="text-white text-2xl md:text-3xl font-bold">$10,500.00</p>
+                </div>
+                <div className="w-10 h-10 rounded-xl bg-elite-cyan/20 border border-elite-cyan/30 flex items-center justify-center">
+                  <TrendingUp className="w-5 h-5 text-elite-cyan" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

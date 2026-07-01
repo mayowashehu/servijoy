@@ -31,6 +31,16 @@ module.exports = {
 		  green: '#22c55e', // Updated from #38A169 to #22c55e for more vibrancy
 		  "soft-white": "#F8FAFC",
 		  "light-gray": "#F3F4F6",
+          // Dark elite theme
+          elite: {
+            black: '#000000',
+            surface: '#0A0A0A',
+            card: '#111111',
+            border: '#1A1A1A',
+            muted: '#A0A0A0',
+            cyan: '#00E5FF',
+            'cyan-dim': '#00B8D4',
+          },
           // New brand colors - Updated for rebranding
           brand: {
             green: '#22c55e',

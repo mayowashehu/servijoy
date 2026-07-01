@@ -1,25 +1,29 @@
-import React from 'react'
-import ServicesHero from '../components/ServiceSections/ServiceHero'
+import React, { useState } from 'react'
+import ServiceHero from '../components/ServiceSections/ServiceHero'
 import ServiceCategories from '../components/ServiceSections/ServiceCategories'
-import FeaturedServices from '../components/ServiceSections/FeaturedServices'
-import ServicesList from '../components/ServiceSections/ServicesList'
-import WhyChooseUs from '../components/HomeSections/WhyChooseUs'
-import HowItWorks from '../components/HomeSections/HowItWorks'
-import TestimonialsSection from '../components/HomeSections/TestimonialsSection'
-import AboutClosing from '../components/AboutUsSections/AboutClosing'
-import ContactUs from '../components/AboutUsSections/ContactUs'
+import AllCategoriesGrid from '../components/ServiceSections/AllCategoriesGrid'
+import ServicesCTA from '../components/ServiceSections/ServicesCTA'
 
 const ServicesPage = () => {
+  const [searchQuery, setSearchQuery] = useState('')
+  const [activeCategory, setActiveCategory] = useState('All')
+
+  const handleFilterClick = () => {
+    document.getElementById('all-categories')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <main className=''>
-      <ServicesHero />
+    <main className="bg-elite-black min-h-screen">
+      <ServiceHero
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onFilterClick={handleFilterClick}
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
+      />
       <ServiceCategories />
-      <FeaturedServices />
-      <WhyChooseUs />
-      <HowItWorks />
-      <TestimonialsSection />
-      <AboutClosing/>
-      <ContactUs />
+      <AllCategoriesGrid searchQuery={searchQuery} activeCategory={activeCategory} />
+      <ServicesCTA />
     </main>
   )
 }

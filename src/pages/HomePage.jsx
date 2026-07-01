@@ -2,26 +2,23 @@ import React from 'react'
 import Hero from '../components/HomeSections/Hero'
 import HowItWorks from '../components/HomeSections/HowItWorks'
 import FeaturedServices from '../components/HomeSections/FeaturedServices'
-import TestimonialsSection from '../components/HomeSections/TestimonialsSection'
-import CTA_bannerSection from '../components/HomeSections/CTA_bannerSection'
-import FAQ from '../components/FAQ'
 import WhyChooseUs from '../components/HomeSections/WhyChooseUs'
+import TestimonialsSection from '../components/HomeSections/TestimonialsSection'
 import BecomeAVendor from '../components/HomeSections/BecomeAVendor'
-import AboutClosing from '../components/AboutUsSections/AboutClosing'
-import ContactUs from '../components/AboutUsSections/ContactUs'
+import PricingSection from '../components/HomeSections/PricingSection'
+import HomeContact from '../components/HomeSections/HomeContact'
 
 const HomePage = () => {
   return (
-    <main className='z-0 '>
+    <main className="bg-elite-black">
       <Hero />
       <HowItWorks />
       <FeaturedServices />
       <WhyChooseUs />
       <TestimonialsSection />
       <BecomeAVendor />
-      {/* <FAQ /> */ }
-      <AboutClosing />
-      <ContactUs />
+      <PricingSection />
+      <HomeContact />
     </main>
   )
 }

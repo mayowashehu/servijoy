@@ -1,101 +1,93 @@
-import React from 'react';
-import { FaShieldAlt, FaBolt, FaThumbsUp, FaUserCheck } from "react-icons/fa";
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Search, Zap, Shield, Headphones } from "lucide-react";
 
-const WhyChooseUs = () => {
-  const benefits = [
-    { 
-      icon: <FaShieldAlt className="text-4xl" />, 
-      title: "Trusted & Verified", 
-      desc: "Every professional is thoroughly vetted to ensure safety and reliability.",
-      color: "from-emerald-500 to-teal-600"
-    },
-    { 
-      icon: <FaBolt className="text-4xl" />, 
-      title: "Fast & Seamless", 
-      desc: "Get matched instantly with top-rated professionals near you.",
-      color: "from-sky-500 to-blue-600" 
-    },
-    { 
-      icon: <FaThumbsUp className="text-4xl" />, 
-      title: "Quality Assurance", 
-      desc: "We prioritize customer satisfaction with reliable service guarantees.",
-      color: "from-amber-500 to-orange-600"
-    },
-    { 
-      icon: <FaUserCheck className="text-4xl" />, 
-      title: "Secure Payments", 
-      desc: "Your transactions are protected with escrow, ensuring peace of mind.",
-      color: "from-violet-500 to-violet-600"
-    }
-  ];
+const features = [
+  { icon: <Search className="w-5 h-5" />, title: "Advanced Search", desc: "Find the right professional in seconds with smart filters." },
+  { icon: <Zap className="w-5 h-5" />, title: "Fastest Delivery", desc: "Get matched and booked faster than any other platform." },
+  { icon: <Shield className="w-5 h-5" />, title: "Secure Payments", desc: "Every transaction protected with escrow-backed security." },
+  { icon: <Headphones className="w-5 h-5" />, title: "Reliable Support", desc: "24/7 dedicated support whenever you need assistance." },
+];
 
-  return (
-    <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Heading with improved typography */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-2 px-4 py-1 bg-emerald-100 text-emerald-800 rounded-full text-sm font-medium">
-            Our Promise
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Why Choose <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-500">ServiJoy</span>?
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Your trusted platform for reliable and professional services.
-          </p>
-        </div>
+const WhyChooseUs = () => (
+  <section className="py-24 bg-elite-black relative overflow-hidden">
+    <div className="absolute inset-0 elite-glow-top pointer-events-none" />
+    <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <motion.h2
+        className="text-3xl md:text-5xl font-bold font-header text-white mb-14"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        Built To A <span className="text-elite-cyan">Radical Speed.</span>
+      </motion.h2>
 
-        {/* Benefits Grid with improved cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {benefits.map((benefit, index) => (
-            <div 
-              key={index} 
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {features.map((f, i) => (
+            <motion.div
+              key={f.title}
+              className="elite-card p-5 hover:border-elite-cyan/30 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
             >
-              {/* Card Background with gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-90 group-hover:opacity-100 transition-opacity duration-300`}></div>
-              
-              {/* Card Content */}
-              <div className="relative p-8 text-center h-full flex flex-col">
-                {/* Icon with animation */}
-                <div className="bg-white/20 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-5 transform group-hover:scale-110 transition-transform duration-300">
-                  {benefit.icon}
-                </div>
-                
-                <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
-                <p className="text-white/90 text-sm flex-grow">{benefit.desc}</p>
-                
-                {/* Subtle arrow indicator */}
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg className="w-6 h-6 mx-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
+              <div className="w-10 h-10 rounded-lg bg-elite-cyan/10 border border-elite-cyan/20 flex items-center justify-center text-elite-cyan mb-4">
+                {f.icon}
               </div>
-            </div>
+              <h3 className="text-white font-semibold mb-1">{f.title}</h3>
+              <p className="text-elite-muted text-sm">{f.desc}</p>
+            </motion.div>
           ))}
         </div>
 
-        {/* Call to Action with improved button */}
-        <div className="mt-16 text-center">
-          <button className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-emerald-600 to-teal-500 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-            Start Booking Now
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-          
-          {/* Added trust indicator */}
-          <p className="mt-4 text-gray-500 flex items-center justify-center">
-            <svg className="w-5 h-5 mr-2 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
-            <span>100% Satisfaction Guarantee</span>
-          </p>
-        </div>
+        {/* Dashboard mockup */}
+        <motion.div
+          className="elite-card p-6 border-elite-cyan/20"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center justify-between mb-6">
+            <span className="text-elite-muted text-xs uppercase tracking-widest">Dashboard</span>
+            <div className="flex gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+              <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+            </div>
+          </div>
+          <div className="mb-4">
+            <div className="flex justify-between text-sm mb-2">
+              <span className="text-white font-mono text-xs">UP_TIME_99</span>
+              <span className="text-elite-cyan font-bold">99.9%</span>
+            </div>
+            <div className="h-2 bg-elite-border rounded-full overflow-hidden">
+              <div className="h-full w-[99%] bg-elite-cyan rounded-full" />
+            </div>
+          </div>
+          <div className="flex items-center gap-3 p-3 bg-elite-surface rounded-xl border border-elite-border">
+            <div className="w-10 h-10 rounded-full bg-elite-cyan/20 flex items-center justify-center text-elite-cyan text-sm font-bold">JD</div>
+            <div>
+              <p className="text-white text-sm font-medium">John Doe</p>
+              <p className="text-elite-muted text-xs">Verified Professional</p>
+            </div>
+            <span className="ml-auto text-elite-cyan text-xs font-semibold">Active</span>
+          </div>
+        </motion.div>
       </div>
-    </section>
-  );
-}
+
+      <div className="mt-12">
+        <Link
+          to="/login-signup"
+          className="inline-flex px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-gray-100 transition-all text-sm tracking-wide"
+        >
+          GET STARTED NOW
+        </Link>
+      </div>
+    </div>
+  </section>
+);
 
 export default WhyChooseUs;

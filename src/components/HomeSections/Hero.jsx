@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaSearch, FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
-import { MdHandyman } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
 // Expanded keyword mapping for better service matching
@@ -95,10 +94,6 @@ const locations = [
 ];
 
 // Animation variants for cleaner animation code
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
-};
 
 const dropdownVariants = {
   hidden: { opacity: 0, y: -10, height: 0 },
@@ -325,13 +320,19 @@ const Hero = () => {
   };
 
   return (
-    <div className="py-20 pt-36 px-4 lg:py-0 lg:min-h-screen flex w-full relative bg-hero bg-no-repeat bg-cover bg-center">
-      {/* Enhanced Gradient Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/70"></div>
+    <div className="py-20 pt-36 px-4 lg:py-0 lg:min-h-screen flex w-full relative bg-elite-black">
+      <div className="absolute inset-0 elite-glow-top pointer-events-none"></div>
 
-      {/* Content */}
       <div className="relative flex text-center w-full max-w-6xl mx-auto justify-center items-center flex-col text-white z-10 px-4 sm:px-6 lg:px-8">
-        {/* Headline with Glow Effect */}
+        <motion.p
+          className="text-elite-cyan text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] mb-5"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          A NEW ERA OF EXCELLENCE
+        </motion.p>
+
         <motion.h1
           className={`text-3xl xs:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-header leading-tight transition-all ${
             isGlowing ? 'animate-glow' : ''
@@ -340,38 +341,37 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Need Help Now? Get a <span className="text-gradient">Skilled</span> <br className="hidden md:block" /> Pro in a Minute!
+          Premium Help, <span className="text-elite-cyan">Delivered Daily.</span>
         </motion.h1>
 
-        {/* Enhanced Subtext */}
         <motion.p
-          className="sm:text-lg max-xs:text-sm md:text-xl lg:text-2xl text-light-gray font-semibold lg:max-w-3xl xl:max-w-4xl mt-4"
+          className="sm:text-base max-xs:text-sm md:text-lg text-elite-muted font-normal lg:max-w-2xl mt-5 leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          Fast, reliable and vetted professionals near you, ready to assist.
+          Experience seamless connections with elite professionals.
+          <br className="hidden sm:block" />
+          Your journey to excellence starts with a single click.
         </motion.p>
 
-        {/* Enhanced Search Section */}
         <motion.div
-          className="mt-8 bg-white/95 backdrop-blur-sm rounded-xl z-50 flex flex-col md:flex-row p-4 md:p-2 items-center max-xs:max-w-sm gap-4 shadow-xl w-full md:w-auto max-w-3xl"
+          className="mt-10 bg-elite-card border border-elite-border rounded-full z-50 flex flex-col md:flex-row p-2 items-center max-xs:max-w-sm gap-2 w-full max-w-4xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          {/* Enhanced Service Input */}
-          <div className="relative flex-1 w-full md:w-64">
+          <div className="relative flex-1 w-full md:w-72">
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <MdHandyman className="text-gray-500" />
+              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <FaSearch className="text-elite-muted" />
               </div>
               <input
                 ref={serviceInputRef}
                 type="text"
                 aria-label="Service search"
-                className="w-full pl-10 pr-10 py-3 text-black bg-gray-100 rounded-lg outline-none focus:ring-2 focus:ring-green transition-all"
-                placeholder="What service do you need?"
+                className="w-full pl-11 pr-10 py-3.5 text-white bg-transparent rounded-full outline-none focus:ring-1 focus:ring-elite-cyan/50 transition-all placeholder:text-elite-muted/70"
+                placeholder="What are you looking for?"
                 value={selectedService}
                 onChange={handleServiceChange}
                 onFocus={showPopularServices}
@@ -379,7 +379,7 @@ const Hero = () => {
               />
               {selectedService && (
                 <button
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                  className="absolute inset-y-0 right-0 flex items-center pr-4 text-elite-muted hover:text-white"
                   onClick={clearService}
                   type="button"
                   aria-label="Clear service"
@@ -393,7 +393,7 @@ const Hero = () => {
               {isServiceDropdownOpen && (
                 <motion.div
                   ref={serviceDropdownRef}
-                  className="absolute w-full bg-white shadow-lg rounded-lg mt-1 max-h-64 overflow-y-auto z-50"
+                  className="absolute w-full bg-elite-card border border-elite-border shadow-2xl rounded-xl mt-2 max-h-64 overflow-y-auto z-50 text-left"
                   variants={dropdownVariants}
                   initial="hidden"
                   animate="visible"
@@ -402,10 +402,10 @@ const Hero = () => {
                 >
                   {recentSearches.length > 0 && !selectedService && (
                     <>
-                      <div className="px-4 py-2 text-xs text-gray-500 bg-gray-50 flex justify-between">
+                      <div className="px-4 py-2 text-xs text-elite-muted bg-elite-surface flex justify-between">
                         <span>Recent Searches</span>
                         <button 
-                          className="text-green hover:underline text-xs"
+                          className="text-elite-cyan hover:underline text-xs"
                           onClick={() => {
                             setRecentSearches([]);
                             localStorage.removeItem('recentSearches');
@@ -417,36 +417,36 @@ const Hero = () => {
                       {recentSearches.map((search, index) => (
                         <div
                           key={`recent-${index}`}
-                          className="px-4 py-2 text-gray-900 hover:bg-gray-100 cursor-pointer flex justify-between items-center transition-colors"
+                          className="px-4 py-2 text-white hover:bg-white/5 cursor-pointer flex justify-between items-center transition-colors"
                           onClick={() => selectRecentSearch(search)}
                         >
                           <div className="flex items-center">
                             <span className="mr-2 text-lg">{services.find(s => s.name === search.service)?.icon || '🔍'}</span>
                             <span className="font-medium">{search.service}</span>
-                            <span className="mx-2 text-gray-400">in</span>
+                            <span className="mx-2 text-elite-muted">in</span>
                             <span>{search.location}</span>
                           </div>
-                          <span className="text-xs text-gray-400">
+                          <span className="text-xs text-elite-muted">
                             {new Date(search.timestamp).toLocaleDateString()}
                           </span>
                         </div>
                       ))}
-                      <div className="border-t border-gray-200"></div>
+                      <div className="border-t border-elite-border"></div>
                     </>
                   )}
                   
-                  <div className="px-4 py-2 text-xs text-gray-500 bg-gray-50">Available Services</div>
+                  <div className="px-4 py-2 text-xs text-elite-muted bg-elite-surface">Available Services</div>
                   <ul>
                     {(filteredServices.length > 0 ? filteredServices : services).map((service, index) => (
                       <li
                         key={index}
-                        className="px-4 py-3 text-gray-900 hover:bg-gray-100 cursor-pointer flex items-center transition-colors"
+                        className="px-4 py-3 text-white hover:bg-white/5 cursor-pointer flex items-center transition-colors"
                         onClick={() => selectService(service)}
                       >
                         <span className="mr-2 text-lg">{service.icon}</span>
                         <div className="flex flex-col text-left">
                           <span className="font-medium">{service.name}</span>
-                          <span className="text-xs text-gray-500">{service.description}</span>
+                          <span className="text-xs text-elite-muted">{service.description}</span>
                         </div>
                       </li>
                     ))}
@@ -456,18 +456,20 @@ const Hero = () => {
             </AnimatePresence>
           </div>
 
-          {/* Enhanced Location Input */}
+          <div className="hidden md:block w-px h-8 bg-elite-border"></div>
+
+          {/* Location Input */}
           <div className="relative flex-1 w-full md:w-64">
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <FaMapMarkerAlt className="text-gray-500" />
+              <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
+                <FaMapMarkerAlt className="text-elite-muted" />
               </div>
               <input
                 ref={locationInputRef}
                 type="text"
                 aria-label="Location search"
-                className="w-full pl-10 pr-10 py-3 text-black bg-gray-100 rounded-lg outline-none focus:ring-2 focus:ring-green transition-all"
-                placeholder="Select Location"
+                className="w-full pl-11 pr-10 py-3.5 text-white bg-transparent rounded-full outline-none focus:ring-1 focus:ring-elite-cyan/50 transition-all placeholder:text-elite-muted/70"
+                placeholder="Location"
                 value={selectedLocation}
                 onChange={handleLocationChange}
                 onFocus={showPopularLocations}
@@ -475,7 +477,7 @@ const Hero = () => {
               />
               {selectedLocation && (
                 <button
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-gray-700"
+                  className="absolute inset-y-0 right-0 flex items-center pr-4 text-elite-muted hover:text-white"
                   onClick={clearLocation}
                   type="button"
                   aria-label="Clear location"
@@ -489,7 +491,7 @@ const Hero = () => {
               {isLocationDropdownOpen && (
                 <motion.div
                   ref={locationDropdownRef}
-                  className="absolute w-full bg-white shadow-lg rounded-lg mt-1 max-h-64 overflow-y-auto z-50"
+                  className="absolute w-full bg-elite-card border border-elite-border shadow-2xl rounded-xl mt-2 max-h-64 overflow-y-auto z-50 text-left"
                   variants={dropdownVariants}
                   initial="hidden"
                   animate="visible"
@@ -499,7 +501,7 @@ const Hero = () => {
                   {filteredLocations.length > 0 ? (
                     <>
                       {filteredLocations.filter(location => location.popular).length > 0 && (
-                        <div className="px-4 py-2 text-xs text-gray-500 bg-gray-50">Popular Locations</div>
+                        <div className="px-4 py-2 text-xs text-elite-muted bg-elite-surface">Popular Locations</div>
                       )}
                       <ul>
                         {filteredLocations
@@ -507,20 +509,20 @@ const Hero = () => {
                           .map((location, index) => (
                             <li
                               key={`popular-${index}`}
-                              className="px-4 py-3 text-gray-900 hover:bg-gray-100 cursor-pointer flex items-center transition-colors"
+                              className="px-4 py-3 text-white hover:bg-white/5 cursor-pointer flex items-center transition-colors"
                               onClick={() => selectLocation(location)}
                             >
-                              <FaMapMarkerAlt className="mr-2 text-green" />
+                              <FaMapMarkerAlt className="mr-2 text-elite-cyan" />
                               <div className="flex flex-col text-left">
                                 <span className="font-medium">{location.name}</span>
-                                <span className="text-xs text-gray-500">{location.region} Region</span>
+                                <span className="text-xs text-elite-muted">{location.region} Region</span>
                               </div>
                             </li>
                           ))}
                       </ul>
                       
                       {filteredLocations.filter(location => !location.popular).length > 0 && (
-                        <div className="px-4 py-2 text-xs text-gray-500 bg-gray-50">Other Locations</div>
+                        <div className="px-4 py-2 text-xs text-elite-muted bg-elite-surface">Other Locations</div>
                       )}
                       <ul>
                         {filteredLocations
@@ -528,20 +530,20 @@ const Hero = () => {
                           .map((location, index) => (
                             <li
                               key={`other-${index}`}
-                              className="px-4 py-3 text-gray-900 hover:bg-gray-100 cursor-pointer flex items-center transition-colors"
+                              className="px-4 py-3 text-white hover:bg-white/5 cursor-pointer flex items-center transition-colors"
                               onClick={() => selectLocation(location)}
                             >
-                              <FaMapMarkerAlt className="mr-2 text-gray-400" />
+                              <FaMapMarkerAlt className="mr-2 text-elite-muted" />
                               <div className="flex flex-col text-left">
                                 <span>{location.name}</span>
-                                <span className="text-xs text-gray-500">{location.region} Region</span>
+                                <span className="text-xs text-elite-muted">{location.region} Region</span>
                               </div>
                             </li>
                           ))}
                       </ul>
                     </>
                   ) : (
-                    <div className="px-4 py-3 text-gray-500 text-center">
+                    <div className="px-4 py-3 text-elite-muted text-center">
                       No locations found for "{selectedLocation}"
                       <div className="text-xs mt-1">Try a different search term</div>
                     </div>
@@ -551,52 +553,40 @@ const Hero = () => {
             </AnimatePresence>
           </div>
 
-          {/* Enhanced Search Button */}
+          {/* Search Button */}
           <motion.button
             ref={searchButtonRef}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className={`flex items-center justify-center px-6 py-3 bg-green text-white font-semibold rounded-lg transition-all duration-300 ${
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className={`flex items-center justify-center px-8 py-3.5 bg-white text-black font-bold rounded-full transition-all duration-300 w-full md:w-auto text-sm ${
               !selectedService || !selectedLocation 
-                ? 'opacity-50 cursor-not-allowed' 
-                : 'hover:bg-green-600 shadow-md hover:shadow-lg'
+                ? 'opacity-40 cursor-not-allowed' 
+                : 'hover:bg-gray-100'
             }`}
             onClick={handleSearch}
             disabled={!selectedService || !selectedLocation}
             type="button"
             aria-label="Search for services"
           >
-            <FaSearch className="mr-2" /> Search
+            Search
           </motion.button>
         </motion.div>
-        
-        {/* Service Categories Quick Access */}
+
         <motion.div
-          className="mt-8 flex flex-wrap justify-center gap-3"
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.9, duration: 0.8 }}
+          className="mt-12 flex flex-wrap justify-center gap-10 sm:gap-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
         >
-          {services.slice(0, 4).map((service, index) => (
-            <motion.button
-              key={index}
-              className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white rounded-full hover:bg-white/20 transition-colors flex items-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                setSelectedService(service.name);
-                setIsServiceDropdownOpen(false);
-                setTimeout(() => {
-                  if (locationInputRef.current) {
-                    locationInputRef.current.focus();
-                  }
-                }, 100);
-              }}
-            >
-              <span className="mr-2">{service.icon}</span>
-              {service.name}
-            </motion.button>
+          {[
+            { value: "3.2k+", label: "HAPPY CLIENTS" },
+            { value: "100+", label: "PROJECTS" },
+            { value: "98%", label: "SUCCESS RATE" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-xl sm:text-2xl font-bold text-white">{stat.value}</div>
+              <div className="text-xs text-elite-muted mt-1 tracking-widest">{stat.label}</div>
+            </div>
           ))}
         </motion.div>
       </div>
