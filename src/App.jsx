@@ -8,7 +8,6 @@ import HowItWorksPage from "./pages/HowItWorksPage";
 import BecomeAVendorPage from "./pages/BecomeAVendorPage";
 import ServicesPage from "./pages/ServicesPage";
 import { useEffect, useState } from "react";
-import { FaSpinner } from "react-icons/fa";
 import FAQpage from "./pages/FAQpage";
 import ScrollToTop from "./ScrollToTop";
 import AuthPage from "./pages/AuthPage";
@@ -45,14 +44,13 @@ import NotFoundPage from "./pages/NotFoundPage";
 import AdminAuthPage from "./Admin/pages/AdminAuthPage";
 import AdminRoute from "./Admin/AdminRoute";
 
-// ProtectedRoute component 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen">
-        <FaSpinner className="text-4xl animate-spin" />
+      <div className="flex justify-center items-center min-h-screen bg-sj-bg">
+        <div className="w-10 h-10 border-2 border-sj-brass/30 border-t-sj-brass rounded-full animate-spin" />
       </div>
     );
   }
@@ -62,7 +60,7 @@ function ProtectedRoute({ children }) {
 
 function PageWrapper() {
   const location = useLocation();
-  const hideNavAndFooterRoutes = ["/dashboard", "/admin"];
+  const hideNavAndFooterRoutes = ["/dashboard", "/admin", "/login-signup", "/forgot-password"];
 
   const shouldHideNavAndFooter = hideNavAndFooterRoutes.some((route) =>
     location.pathname.startsWith(route)
@@ -120,7 +118,7 @@ function PageWrapper() {
               <Route path="vendor-disputes" element={<VendorDisputeManagement />} />
               <Route path="book/:serviceName" element={<AvailableVendors />} />
             </Route>
-             
+
             {/* Admin Routes (protected and nested) */}
             <Route path="/admin/login" element={<AdminAuthPage />} />
             <Route
@@ -158,7 +156,6 @@ function App() {
     const visits = parseInt(localStorage.getItem("visitCount") || "0", 10);
     const lastVisit = localStorage.getItem("lastPreloader");
 
-    // Show preloader for first-time visitors or after 3 days
     if (visits < 1 || !lastVisit || Date.now() - lastVisit > 3 * 24 * 60 * 60 * 1000) {
       setIsPreloading(true);
       localStorage.setItem("lastPreloader", Date.now());
@@ -166,15 +163,13 @@ function App() {
       setIsPreloading(false);
     }
 
-    // Update visit count
     localStorage.setItem("visitCount", (visits + 1).toString());
 
-    // Only set timeout if preloader is shown
     if (isPreloading) {
       const timer = setTimeout(() => setIsPreloading(false), 2000);
       return () => clearTimeout(timer);
     }
-  }, []); // Empty dependency array since this only runs on mount
+  }, []);
 
   return (
     <>
@@ -183,15 +178,21 @@ function App() {
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut", delay: 1.2 }}
-          className="min-h-screen flex flex-col justify-center items-center w-full h-full gradient-black relative overflow-hidden"
+          className="min-h-screen flex flex-col justify-center items-center w-full h-full bg-sj-bg relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-black/60"></div>
-          <div className="absolute w-60 h-60 bg-white/15 rounded-full blur-3xl top-1/4 left-1/3 animate-pulse"></div>
-          <div className="absolute w-40 h-40 bg-white/5 rounded-full blur-3xl bottom-1/4 right-1/3 animate-pulse"></div>
-          <h1 className="text-4xl xs:text-5xl sm:text-6xl animate-glow_fast font-bold font-header mb-2 text-gradient drop-shadow-lg">
-            ServiJoy
-          </h1>
-          <FaSpinner className="text-white text-5xl animate-spin" />
+          <div className="absolute inset-0 sj-grid-bg pointer-events-none" />
+          <div className="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_50%_50%,rgba(217,164,65,0.2),transparent_60%)] pointer-events-none" />
+
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative z-10 text-4xl xs:text-5xl sm:text-6xl font-semibold font-display mb-6 text-sj-ink"
+          >
+            Servi<span className="text-sj-brass">Joy</span>
+          </motion.h1>
+
+          <div className="relative z-10 w-8 h-8 border-2 border-sj-brass/30 border-t-sj-brass rounded-full animate-spin" />
         </motion.div>
       ) : (
         <AuthProvider>

@@ -7,7 +7,7 @@ import HowItWorksCTA from '../components/HowItWorksSection/HowItWorksCTA'
 
 const HowItWorksPage = () => {
   return (
-    <main className="bg-elite-black min-h-screen">
+    <main className="bg-sj-bg min-h-screen">
       <HowItWorksHero />
       <HowItWorksSteps />
       <EfficiencySection />

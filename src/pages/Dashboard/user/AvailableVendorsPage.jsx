@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Search, Sliders, Star, Clock, DollarSign, Scaling } from "lucide-react";
+import { Search, Sliders, Star, Clock, DollarSign } from "lucide-react";
 import VendorFilters from "./components/AvailableVendorsSections/VendorFilters";
 import axios from "axios";
 import VendorDetailsModal from "./components/AvailableVendorsSections/VendorDetailsModal";
@@ -9,11 +9,9 @@ import { useParams } from "react-router-dom";
 const AvailableVendors = () => {
   const [loading, setLoading] = useState(true);
   let service = useParams();
-  
-  // Extract only the first word before the hyphen
+
   const serviceName = service.serviceName ? service.serviceName.split('-')[0] : "";
 
-  // Initial mockup vendors data (keeping as fallback)
   const initialVendors = [
     {
       id: 1,
@@ -42,9 +40,7 @@ const AvailableVendors = () => {
       description: "Premium cleaning services for your home or office.",
       categories: ["Cleaning", "Residential", "Commercial"],
       availability: "Next day",
-      reviewsList: [
-        { reviewer: "Charlie", rating: 5, comment: "Very thorough and friendly." }
-      ],
+      reviewsList: [{ reviewer: "Charlie", rating: 5, comment: "Very thorough and friendly." }],
     },
     {
       id: 3,
@@ -79,28 +75,22 @@ const AvailableVendors = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [error, setError] = useState(null);
 
-  // Booking state
   const [bookingVendor, setBookingVendor] = useState(null);
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  
-  // Recently viewed vendors
+
   const [recentlyViewed, setRecentlyViewed] = useState([]);
 
-  // Fetch vendors from API
   useEffect(() => {
     const fetchVendors = async () => {
       setLoading(true);
       try {
-        // Use serviceName from params or hardcoded service if needed
         const serviceTypeParam = serviceName || "emergency";
-        console.log(serviceTypeParam)
         const response = await axios.get(`http://localhost:5000/api/vendors/service?serviceType=${serviceTypeParam}`);
-        
+
         if (response.data.success && response.data.vendors && response.data.vendors.length > 0) {
-          // Transform the API response to match our expected format
           const transformedVendors = response.data.vendors.map(vendor => ({
             id: vendor.id,
-            name: vendor.name || vendor.businessName || "Unnamed Vendor", // Fallback if name is missing
+            name: vendor.name || vendor.businessName || "Unnamed Vendor",
             profileImage: vendor.profileImage || "../../../assets/imgs/hero.webp",
             experience: vendor.experience || 0,
             rating: vendor.rating || 0,
@@ -112,19 +102,16 @@ const AvailableVendors = () => {
             reviewsList: vendor.reviewsList || [],
             vendorVerified: vendor.vendorVerified
           }));
-          
+
           setVendors(transformedVendors);
           setFilteredVendors(transformedVendors);
-          console.log("API vendors loaded:", transformedVendors);
         } else {
-          console.log("No vendors found, using mockup data");
           setVendors(initialVendors);
           setFilteredVendors(initialVendors);
         }
       } catch (err) {
         console.error("Error fetching vendors:", err);
         setError("Failed to load vendors. Using default data instead.");
-        // Fallback to mockup data on error
         setVendors(initialVendors);
         setFilteredVendors(initialVendors);
       } finally {
@@ -137,8 +124,7 @@ const AvailableVendors = () => {
 
   useEffect(() => {
     let result = vendors;
-    
-    // Apply search filter
+
     if (searchQuery) {
       result = result.filter((vendor) =>
         vendor.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -146,25 +132,21 @@ const AvailableVendors = () => {
         vendor.categories.some(cat => cat.toLowerCase().includes(searchQuery.toLowerCase()))
       );
     }
-    
-    // Apply category filter
+
     if (filters.categories.length > 0) {
       result = result.filter((vendor) =>
         vendor.categories.some(cat => filters.categories.includes(cat))
       );
     }
-    
-    // Apply rating filter
+
     if (filters.minRating > 0) {
       result = result.filter((vendor) => vendor.rating >= filters.minRating);
     }
-    
-    // Apply availability filter
+
     if (filters.availability !== "all") {
       result = result.filter((vendor) => vendor.availability === filters.availability);
     }
-    
-    // Apply sorting
+
     if (sortBy === "rating") {
       result = [...result].sort((a, b) => b.rating - a.rating);
     } else if (sortBy === "price") {
@@ -178,27 +160,17 @@ const AvailableVendors = () => {
     } else if (sortBy === "reviews") {
       result = [...result].sort((a, b) => b.reviews - a.reviews);
     }
-    
+
     setFilteredVendors(result);
   }, [searchQuery, sortBy, vendors, filters]);
 
-  const handleFilterChange = (query) => {
-    setSearchQuery(query);
-  };
-
-  const handleSortChange = (sortOption) => {
-    setSortBy(sortOption);
-  };
-
-  const handleFilterUpdate = (newFilters) => {
-    setFilters({ ...filters, ...newFilters });
-  };
+  const handleFilterChange = (query) => setSearchQuery(query);
+  const handleSortChange = (sortOption) => setSortBy(sortOption);
+  const handleFilterUpdate = (newFilters) => setFilters({ ...filters, ...newFilters });
 
   const handleViewDetails = (vendor) => {
     setActiveVendor(vendor);
     setIsDetailsModalOpen(true);
-    
-    // Add to recently viewed if not already there
     if (!recentlyViewed.some(v => v.id === vendor.id)) {
       setRecentlyViewed(prev => [vendor, ...prev].slice(0, 3));
     }
@@ -219,80 +191,79 @@ const AvailableVendors = () => {
     setIsBookingModalOpen(false);
   };
 
-  const handleToggleFilters = () => {
-    setShowFilters(!showFilters);
-  };
+  const handleToggleFilters = () => setShowFilters(!showFilters);
 
   return (
-    <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900 py-8 px-4 transition-colors duration-300">
+    <div className="relative min-h-screen bg-sj-bg py-8 px-4">
       {loading && (
-        <div className="fixed inset-0 flex flex-col justify-center items-center bg-white dark:bg-gray-900 bg-opacity-90 dark:bg-opacity-90 backdrop-blur-sm z-50">
-          <div className="loading loading-spinner loading-lg text-primary"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300 animate-pulse">Finding available vendors...</p>
+        <div className="fixed inset-0 flex flex-col justify-center items-center bg-sj-bg/95 backdrop-blur-sm z-50">
+          <div className="w-10 h-10 border-2 border-sj-brass/30 border-t-sj-brass rounded-full animate-spin" />
+          <p className="mt-4 text-sj-muted animate-pulse text-sm">Finding available vendors...</p>
         </div>
       )}
-      
+
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 text-center">
-          <h1 className="text-3xl text-gray-800 md:text-4xl font-bold font-header dark:text-gray-200 mb-3">
+          <span className="sj-tag text-[11px] text-sj-brass mb-3 inline-block">VENDOR SEARCH</span>
+          <h1 className="text-3xl md:text-4xl font-semibold font-display text-sj-ink mb-3">
             Find the Perfect {serviceName || "Service"} Professional
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-sj-muted max-w-2xl mx-auto">
             Browse our vetted vendors and book services tailored to your needs
           </p>
           {error && (
-            <div className="mt-4 p-2 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-200 rounded">
+            <div className="mt-4 inline-block p-2 px-4 bg-red-500/10 border border-red-500/30 text-red-300 rounded-lg text-sm">
               {error}
             </div>
           )}
         </div>
-        
-        {/* Enhanced Search Bar */}
+
+        {/* Search Bar */}
         <div className="relative mb-6">
-          <div className={`flex items-center p-3 border rounded-lg bg-white dark:bg-gray-800 shadow-sm transition-all duration-200 ${isSearchFocused ? 'ring-2 ring-primary shadow-md' : ''}`}>
-            <Search className="h-5 w-5 text-gray-500 dark:text-gray-400 mr-2" />
+          <div className={`flex items-center p-3 border rounded-xl bg-sj-card transition-all duration-200 ${isSearchFocused ? "border-sj-brass/40" : "border-sj-line"}`}>
+            <Search className="h-5 w-5 text-sj-muted mr-2" />
             <input
               type="text"
               placeholder="Search by name, service, or keyword..."
-              className="flex-grow bg-transparent focus:outline-none text-gray-700 dark:text-gray-200"
+              className="flex-grow bg-transparent focus:outline-none text-sj-ink placeholder:text-sj-muted/60"
               value={searchQuery}
               onChange={(e) => handleFilterChange(e.target.value)}
               onFocus={() => setIsSearchFocused(true)}
               onBlur={() => setIsSearchFocused(false)}
             />
-            <button 
+            <button
               onClick={handleToggleFilters}
-              className="flex items-center px-3 py-1 ml-2 text-sm bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+              className="flex items-center px-3 py-1.5 ml-2 text-sm bg-sj-surface border border-sj-line rounded-lg hover:border-sj-brass/30 transition-colors text-sj-ink"
             >
               <Sliders className="h-4 w-4 mr-1" />
               Filters
             </button>
           </div>
         </div>
-        
-        {/* Enhanced Filter Section */}
+
+        {/* Filter Panel */}
         {showFilters && (
-          <div className="mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md animate-fadeIn">
-            <VendorFilters 
-              onFilterChange={handleFilterChange} 
-              onSortChange={handleSortChange} 
+          <div className="mb-6 p-4 bg-sj-card border border-sj-line rounded-xl">
+            <VendorFilters
+              onFilterChange={handleFilterChange}
+              onSortChange={handleSortChange}
               onFilterUpdate={handleFilterUpdate}
               filters={filters}
             />
           </div>
         )}
-        
+
         {/* Sort Controls */}
         <div className="flex justify-between items-center mb-6">
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-sj-muted text-sm">
             {filteredVendors.length} vendors found
           </p>
           <div className="flex items-center space-x-2">
-            <span className="text-sm text-gray-500 dark:text-gray-400">Sort by:</span>
-            <select 
+            <span className="text-sm text-sj-muted">Sort by:</span>
+            <select
               value={sortBy}
               onChange={(e) => handleSortChange(e.target.value)}
-              className="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md py-1 px-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+              className="bg-sj-card border border-sj-line rounded-lg py-1.5 px-2 text-sm text-sj-ink focus:outline-none focus:border-sj-brass/40"
             >
               <option value="rating">Top Rated</option>
               <option value="price">Price: Low to High</option>
@@ -301,58 +272,58 @@ const AvailableVendors = () => {
             </select>
           </div>
         </div>
-        
-        {/* Recently Viewed Section */}
+
+        {/* Recently Viewed */}
         {recentlyViewed.length > 0 && (
           <div className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Recently Viewed</h2>
+            <span className="sj-tag text-[10px] text-sj-brass mb-3 inline-block">RECENTLY VIEWED</span>
             <div className="flex overflow-x-auto space-x-4 pb-2">
               {recentlyViewed.map((vendor) => (
-                <div 
-                  key={`recent-${vendor.id}`} 
-                  className="flex-shrink-0 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow p-3 cursor-pointer border border-gray-200 dark:border-gray-700"
+                <div
+                  key={`recent-${vendor.id}`}
+                  className="flex-shrink-0 w-48 bg-sj-card border border-sj-line rounded-xl hover:border-sj-brass/30 transition-colors p-3 cursor-pointer"
                   onClick={() => handleViewDetails(vendor)}
                 >
-                  <h3 className="font-medium text-gray-800 dark:text-gray-200 truncate">{vendor.name}</h3>
+                  <h3 className="font-medium text-sj-ink truncate">{vendor.name}</h3>
                   <div className="flex items-center text-sm mt-1">
-                    <Star className="h-3 w-3 text-yellow-500 mr-1" fill="currentColor" />
-                    <span className="text-gray-700 dark:text-gray-300">{vendor.rating}</span>
+                    <Star className="h-3 w-3 text-sj-brass mr-1" fill="currentColor" />
+                    <span className="text-sj-muted">{vendor.rating}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         )}
-        
+
         {/* Vendor Cards */}
         {filteredVendors.length === 0 ? (
           <div className="text-center py-10">
-            <p className="text-gray-500 dark:text-gray-400 text-lg mb-3">
+            <p className="text-sj-muted text-lg mb-4">
               No vendors found matching your criteria
             </p>
-            <button 
+            <button
               onClick={() => {
                 setSearchQuery("");
-                setFilters({categories: [], minRating: 0, availability: "all"});
+                setFilters({ categories: [], minRating: 0, availability: "all" });
               }}
-              className="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
+              className="px-5 py-2.5 bg-sj-brass text-black font-bold rounded-full hover:brightness-110 transition-all text-sm"
             >
               Clear filters
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredVendors.map((vendor) => (
-              <div 
+              <div
                 key={vendor.id}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-gray-200 dark:border-gray-700"
+                className="bg-sj-card border border-sj-line rounded-2xl hover:border-sj-brass/30 transition-all overflow-hidden"
               >
-                <div className="p-4">
+                <div className="p-5">
                   <div className="flex items-start">
-                    <div className="h-16 w-16 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden mr-3">
-                      <img 
-                        src={vendor.profileImage} 
-                        alt={vendor.name} 
+                    <div className="h-16 w-16 rounded-full bg-sj-surface border border-sj-line overflow-hidden mr-3 flex-shrink-0">
+                      <img
+                        src={vendor.profileImage}
+                        alt={vendor.name}
                         className="h-full w-full object-cover"
                         onError={(e) => {
                           e.target.onerror = null;
@@ -361,58 +332,58 @@ const AvailableVendors = () => {
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-gray-800 dark:text-gray-200 text-lg">{vendor.name}</h3>
+                      <h3 className="font-semibold font-display text-sj-ink text-lg">{vendor.name}</h3>
                       <div className="flex items-center mt-1">
-                        <div className="flex items-center text-yellow-500">
+                        <div className="flex items-center text-sj-brass">
                           <Star className="h-4 w-4 fill-current" />
-                          <span className="ml-1 text-gray-700 dark:text-gray-300">{vendor.rating}</span>
+                          <span className="ml-1 text-sj-muted">{vendor.rating}</span>
                         </div>
-                        <span className="mx-2 text-gray-400">•</span>
-                        <span className="text-gray-600 dark:text-gray-400 text-sm">{vendor.reviews} reviews</span>
+                        <span className="mx-2 text-sj-line">•</span>
+                        <span className="text-sj-muted text-sm">{vendor.reviews} reviews</span>
                       </div>
                     </div>
                   </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 mt-3 text-sm line-clamp-2">
+
+                  <p className="text-sj-muted mt-3 text-sm leading-relaxed line-clamp-2">
                     {vendor.description}
                   </p>
-                  
-                  <div className="flex flex-wrap gap-1 mt-3">
+
+                  <div className="flex flex-wrap gap-1.5 mt-3">
                     {vendor.categories && vendor.categories.map((category, i) => (
-                      <span 
+                      <span
                         key={`${vendor.id}-cat-${i}`}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs"
+                        className="px-2.5 py-1 bg-sj-surface border border-sj-line text-sj-muted rounded-full text-xs"
                       >
                         {category}
                       </span>
                     ))}
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-2 mt-4">
-                    <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                    <div className="flex items-center text-sj-muted text-sm">
                       <Clock className="h-4 w-4 mr-1" />
                       <span>{vendor.experience} years</span>
                     </div>
-                    <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                    <div className="flex items-center text-sj-muted text-sm">
                       <DollarSign className="h-4 w-4 mr-1" />
                       <span>{vendor.pricing}</span>
                     </div>
                   </div>
-                  
+
                   <div className="mt-4 flex items-center justify-between">
-                    <span className="text-sm font-medium text-primary">
-                      {vendor.availability} availability
+                    <span className="text-xs sj-tag text-sj-brass">
+                      {vendor.availability}
                     </span>
                     <div className="space-x-2">
                       <button
                         onClick={() => handleViewDetails(vendor)}
-                        className="px-3 py-1.5 text-sm border border-gray-300 text-gray-500 dark:text-gray-200 dark:border-gray-600 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                        className="px-3 py-1.5 text-sm border border-sj-line text-sj-ink rounded-full hover:border-sj-brass/30 transition-colors"
                       >
                         View Details
                       </button>
                       <button
                         onClick={() => handleBookNow(vendor)}
-                        className="px-3 py-1.5 text-sm bg-primary text-white rounded-md hover:bg-primary-dark transition-colors"
+                        className="px-3 py-1.5 text-sm bg-sj-brass text-black font-bold rounded-full hover:brightness-110 transition-all"
                       >
                         Book Now
                       </button>
@@ -423,34 +394,34 @@ const AvailableVendors = () => {
             ))}
           </div>
         )}
-        
-        {/* Pagination - Simple version */}
+
+        {/* Pagination */}
         {filteredVendors.length > 0 && (
-          <div className="mt-8 flex justify-center">
+          <div className="mt-10 flex justify-center">
             <nav className="flex items-center space-x-2" aria-label="Pagination">
-              <button className="px-3 py-1 border rounded-md text-gray-500 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50" disabled>
+              <button className="px-3 py-1.5 border border-sj-line rounded-lg text-sj-muted hover:border-sj-brass/30 disabled:opacity-40 transition-colors text-sm" disabled>
                 Previous
               </button>
-              <span className="px-3 py-1 border rounded-md bg-primary text-white border-primary">1</span>
-              <button className="px-3 py-1 border rounded-md text-gray-500 dark:text-gray-400 border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50" disabled>
+              <span className="px-3 py-1.5 border border-sj-brass rounded-lg bg-sj-brass text-black text-sm font-bold">1</span>
+              <button className="px-3 py-1.5 border border-sj-line rounded-lg text-sj-muted hover:border-sj-brass/30 disabled:opacity-40 transition-colors text-sm" disabled>
                 Next
               </button>
             </nav>
           </div>
         )}
       </div>
-      
-      <VendorDetailsModal 
-        vendor={activeVendor} 
-        isOpen={isDetailsModalOpen} 
-        onClose={handleCloseDetailsModal} 
+
+      <VendorDetailsModal
+        vendor={activeVendor}
+        isOpen={isDetailsModalOpen}
+        onClose={handleCloseDetailsModal}
         onBookNow={handleBookNow}
       />
-      
-      <BookingFlowModal 
-        vendor={bookingVendor} 
-        isOpen={isBookingModalOpen} 
-        onClose={handleCloseBookingModal} 
+
+      <BookingFlowModal
+        vendor={bookingVendor}
+        isOpen={isBookingModalOpen}
+        onClose={handleCloseBookingModal}
       />
     </div>
   );

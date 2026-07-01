@@ -3,69 +3,67 @@ import { Search, GitBranch, Calendar, ShieldCheck, ArrowUpRight } from "lucide-r
 
 const steps = [
   {
-    num: "01",
+    num: "STEP / 01",
     icon: <Search className="w-5 h-5" />,
     title: "Search",
-    desc: "Tell us your needs. Our intelligent search filters through thousands of vetted specialists in milliseconds.",
+    desc: "Tell us your needs. We filter through thousands of vetted specialists in milliseconds.",
   },
   {
-    num: "02",
+    num: "STEP / 02",
     icon: <GitBranch className="w-5 h-5" />,
     title: "Match",
-    desc: "Our AI engine matches you with the perfect professional based on skills, location, and verified ratings.",
+    desc: "You're matched with the right professional based on skills, location, and verified ratings.",
   },
   {
-    num: "03",
+    num: "STEP / 03",
     icon: <Calendar className="w-5 h-5" />,
     title: "Book",
-    desc: "Instant confirmation and secure scheduling. Everything is handled within our encrypted communication hub.",
+    desc: "Instant confirmation and secure scheduling, handled inside one messaging thread.",
   },
   {
-    num: "04",
+    num: "STEP / 04",
     icon: <ShieldCheck className="w-5 h-5" />,
     title: "Relax",
-    desc: "Experience quality service guaranteed by ServiJoy. Release payment only when you're 100% satisfied.",
+    desc: "Quality guaranteed by ServiJoy. Payment releases only when you're satisfied.",
   },
 ];
 
 const HowItWorkSteps = () => (
-  <section className="py-16 md:py-24 bg-elite-surface relative overflow-hidden" id="the-process">
-    <div className="absolute inset-0 elite-glow pointer-events-none" />
+  <section className="py-16 md:py-24 bg-sj-surface relative overflow-hidden" id="the-process">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
         <div>
-          <h2 className="text-2xl md:text-4xl font-bold font-header text-white mb-3">The Process</h2>
-          <p className="text-elite-muted text-sm md:text-base max-w-xl leading-relaxed">
-            Four intuitive steps to transform how you access premium services. Built for speed,
-            designed for clarity.
-          </p>
+          <span className="sj-tag text-[11px] text-sj-brass">THE PROCESS</span>
+          <h2 className="mt-4 font-display text-2xl md:text-4xl font-semibold text-sj-ink">
+            Four steps, start to finish
+          </h2>
         </div>
         <a
           href="#the-process"
-          className="inline-flex items-center gap-1 text-elite-cyan text-sm font-semibold hover:brightness-110 transition-all flex-shrink-0"
+          className="inline-flex items-center gap-1 text-sj-brass text-sm font-medium hover:brightness-110 transition-all flex-shrink-0"
         >
-          VIEW TIMELINE <ArrowUpRight className="w-4 h-4" />
+          View timeline <ArrowUpRight className="w-4 h-4" />
         </a>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="hidden lg:block absolute top-[38px] left-[13%] right-[13%] sj-connector" />
+
         {steps.map((step, i) => (
           <motion.div
             key={step.num}
-            className="elite-card p-6 relative overflow-hidden hover:border-elite-cyan/30 transition-colors min-h-[220px]"
+            className="relative bg-sj-card border border-sj-line rounded-2xl p-6 hover:border-sj-brass/30 transition-colors min-h-[220px]"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
           >
-            <span className="absolute top-4 right-4 text-5xl font-bold text-white/[0.04] select-none">
-              {step.num}
-            </span>
-            <div className="w-10 h-10 rounded-xl bg-elite-cyan/10 border border-elite-cyan/20 flex items-center justify-center text-elite-cyan mb-5 relative z-10">
+            <div className="w-10 h-10 rounded-xl bg-sj-brass/10 border border-sj-brass/20 flex items-center justify-center text-sj-brass mb-5 relative z-10">
               {step.icon}
             </div>
-            <h3 className="text-white font-bold text-lg mb-2 relative z-10">{step.title}</h3>
-            <p className="text-elite-muted text-sm leading-relaxed relative z-10">{step.desc}</p>
+            <span className="sj-tag text-[9px] text-sj-muted">{step.num}</span>
+            <h3 className="text-sj-ink font-semibold text-lg mt-2 mb-2 font-display">{step.title}</h3>
+            <p className="text-sj-muted text-sm leading-relaxed">{step.desc}</p>
           </motion.div>
         ))}
       </div>

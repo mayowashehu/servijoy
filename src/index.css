@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -152,6 +154,38 @@
   .review {
     @apply transition-transform transform hover:scale-105 duration-300 ease-in-out;
   }
+
+  /* ---- ServiJoy "Field Instrument" utilities (new) ---- */
+
+  /* Faint blueprint grid — sits behind the Hero */
+  .sj-grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(217, 164, 65, 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(217, 164, 65, 0.055) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center top;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  /* Monospace bracket tag, e.g. <span className="sj-tag">VERIFIED</span> -> [ VERIFIED ] */
+  .sj-tag {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.14em;
+  }
+  .sj-tag::before { content: '['; margin-right: 0.4em; opacity: 0.55; }
+  .sj-tag::after  { content: ']'; margin-left: 0.4em; opacity: 0.55; }
+
+  /* Dashed schematic connector between HowItWorks steps */
+  .sj-connector {
+    background-image: repeating-linear-gradient(
+      to right,
+      rgba(139, 143, 156, 0.4) 0,
+      rgba(139, 143, 156, 0.4) 6px,
+      transparent 6px,
+      transparent 14px
+    );
+    height: 1px;
+  }
 }
 
 @layer components {
@@ -164,5 +198,13 @@
   .dark .btn:disabled {
     background-color: #4B5563;
     color: #D1D5DB;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

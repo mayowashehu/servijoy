@@ -36,16 +36,17 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
   const handleBook = (route) => navigate(route);
 
   return (
-    <section className="py-12 md:py-20 bg-elite-surface relative overflow-hidden" id="all-categories">
-      <div className="absolute inset-0 elite-glow pointer-events-none" />
+    <section className="py-12 md:py-20 bg-sj-bg relative overflow-hidden" id="all-categories">
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_80%_0%,rgba(217,164,65,0.12),transparent_60%)] pointer-events-none" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8 md:mb-12">
           <div>
-            <h2 className="text-2xl md:text-4xl font-bold font-header text-white mb-2">
+            <span className="sj-tag text-[11px] text-sj-brass">BROWSE ALL</span>
+            <h2 className="mt-4 text-2xl md:text-4xl font-semibold font-display text-sj-ink mb-2">
               All Categories
             </h2>
-            <p className="text-elite-muted text-sm md:text-base">
+            <p className="text-sj-muted text-sm md:text-base">
               Choose from over 50+ specialized service types
             </p>
           </div>
@@ -54,8 +55,8 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
               onClick={() => setViewMode("grid")}
               className={`w-9 h-9 rounded-lg border flex items-center justify-center transition-colors ${
                 viewMode === "grid"
-                  ? "bg-elite-cyan text-black border-elite-cyan"
-                  : "border-elite-border text-elite-muted hover:text-white"
+                  ? "bg-sj-brass text-black border-sj-brass"
+                  : "border-sj-line text-sj-muted hover:text-sj-ink"
               }`}
               aria-label="Grid view"
             >
@@ -65,8 +66,8 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
               onClick={() => setViewMode("list")}
               className={`w-9 h-9 rounded-lg border flex items-center justify-center transition-colors ${
                 viewMode === "list"
-                  ? "bg-elite-cyan text-black border-elite-cyan"
-                  : "border-elite-border text-elite-muted hover:text-white"
+                  ? "bg-sj-brass text-black border-sj-brass"
+                  : "border-sj-line text-sj-muted hover:text-sj-ink"
               }`}
               aria-label="List view"
             >
@@ -84,7 +85,7 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
           {displayed.map((service, i) => (
             <motion.div
               key={service.id}
-              className={`elite-card overflow-hidden hover:border-elite-cyan/30 transition-all ${
+              className={`bg-sj-card border border-sj-line rounded-2xl overflow-hidden hover:border-sj-brass/30 transition-all ${
                 viewMode === "list" ? "flex flex-row" : ""
               }`}
               initial={{ opacity: 0, y: 20 }}
@@ -96,10 +97,10 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
                 <OptimizedImage
                   src={imageMap[service.image]}
                   alt={service.title}
-                  className="w-full h-full object-cover brightness-60 hover:brightness-75 transition-all"
+                  className="w-full h-full object-cover brightness-75 hover:brightness-90 transition-all"
                 />
                 {service.badge && (
-                  <span className="absolute top-3 left-3 bg-elite-cyan text-black text-xs font-bold px-2.5 py-0.5 rounded-full">
+                  <span className="absolute top-3 left-3 bg-sj-brass text-black text-xs font-bold px-2.5 py-0.5 rounded-full">
                     {service.badge}
                   </span>
                 )}
@@ -107,14 +108,14 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
               <div className="p-5 flex flex-col flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-base">{service.icon}</span>
-                  <h3 className="text-white font-bold">{service.title}</h3>
+                  <h3 className="text-sj-ink font-semibold font-display">{service.title}</h3>
                 </div>
-                <p className="text-elite-muted text-sm leading-relaxed mb-4 flex-grow">
+                <p className="text-sj-muted text-sm leading-relaxed mb-4 flex-grow">
                   {service.description}
                 </p>
                 <div className="flex items-center justify-between gap-3 mt-auto">
-                  <span className="text-xs text-elite-muted">
-                    FROM <span className="text-white font-bold text-sm">{service.price}/{service.unit}</span>
+                  <span className="text-xs text-sj-muted">
+                    FROM <span className="text-sj-ink font-bold text-sm">{service.price}/{service.unit}</span>
                   </span>
                   <button
                     onClick={() => handleBook(service.route)}
@@ -133,7 +134,7 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
           {displayed.map((service, i) => (
             <motion.div
               key={service.id}
-              className="elite-card overflow-hidden"
+              className="bg-sj-card border border-sj-line rounded-2xl overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -143,25 +144,25 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
                 <OptimizedImage
                   src={imageMap[service.image]}
                   alt={service.title}
-                  className="w-full h-full object-cover brightness-60"
+                  className="w-full h-full object-cover brightness-75"
                 />
-                <span className="absolute bottom-3 left-3 bg-elite-cyan text-black text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">
+                <span className="absolute bottom-3 left-3 bg-sj-brass text-black text-xs font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wide">
                   {service.category}
                 </span>
               </div>
               <div className="p-5">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-white font-bold text-lg">{service.title}</h3>
-                  <div className="flex items-center gap-1 text-elite-muted text-sm">
-                    <Star className="w-3.5 h-3.5 fill-elite-cyan text-elite-cyan" />
+                  <h3 className="text-sj-ink font-semibold font-display text-lg">{service.title}</h3>
+                  <div className="flex items-center gap-1 text-sj-muted text-sm">
+                    <Star className="w-3.5 h-3.5 fill-sj-brass text-sj-brass" />
                     {service.rating}
                   </div>
                 </div>
-                <p className="text-elite-muted text-sm leading-relaxed mb-5">{service.description}</p>
+                <p className="text-sj-muted text-sm leading-relaxed mb-5">{service.description}</p>
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-elite-muted text-xs uppercase tracking-wider">Starts at</p>
-                    <p className="text-white font-bold text-lg">{service.price}</p>
+                    <p className="sj-tag text-[9px] text-sj-muted">Starts at</p>
+                    <p className="text-sj-ink font-bold text-lg">{service.price}</p>
                   </div>
                   <button
                     onClick={() => handleBook(service.route)}
@@ -179,7 +180,7 @@ const AllCategoriesGrid = ({ searchQuery = "", activeCategory = "All" }) => {
         <div className="mt-10 text-center">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="w-full md:w-auto px-8 py-3.5 elite-card hover:border-elite-cyan/30 text-white font-medium rounded-full text-sm transition-all inline-flex items-center justify-center gap-2"
+            className="w-full md:w-auto px-8 py-3.5 bg-sj-card border border-sj-line hover:border-sj-brass/30 text-sj-ink font-medium rounded-full text-sm transition-all inline-flex items-center justify-center gap-2"
           >
             VIEW ALL 52 SPECIALIZED SERVICES
             <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? "rotate-180" : ""}`} />

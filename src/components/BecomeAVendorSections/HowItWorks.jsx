@@ -2,24 +2,24 @@ import { motion } from "framer-motion";
 
 const steps = [
   {
-    num: 1,
+    num: "01",
     title: "Sign Up",
-    desc: "Complete a quick profile, select your skills, experience, and service areas in under 5 minutes.",
+    desc: "Complete a quick profile — your trade, experience, and service area — in under 5 minutes.",
   },
   {
-    num: 2,
+    num: "02",
     title: "Get Vetted",
-    desc: "Our team conducts a standard background and certification check to ensure platform-wide quality.",
+    desc: "We run a standard background and certification check to keep quality consistent platform-wide.",
   },
   {
-    num: 3,
+    num: "03",
     title: "Start Earning",
-    desc: "Accept your first booking and start growing your business with the power of ServiJoy's platform.",
+    desc: "Accept your first booking and start building a rating that brings you repeat clients.",
   },
 ];
 
 const HowItWorksVendor = () => (
-  <section className="py-16 md:py-24 bg-elite-black relative overflow-hidden">
+  <section className="py-16 md:py-24 bg-sj-bg relative overflow-hidden">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
         className="text-center mb-12 md:mb-16"
@@ -27,11 +27,9 @@ const HowItWorksVendor = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <p className="text-elite-cyan text-xs font-semibold tracking-widest uppercase mb-3">
-          THE JOURNEY
-        </p>
-        <h2 className="text-2xl md:text-4xl font-bold font-header text-white">
-          Simple steps to success
+        <span className="sj-tag text-[11px] text-sj-brass">THE JOURNEY</span>
+        <h2 className="mt-4 font-display text-2xl md:text-4xl font-semibold text-sj-ink">
+          Three steps to your first booking
         </h2>
       </motion.div>
 
@@ -45,11 +43,11 @@ const HowItWorksVendor = () => (
             viewport={{ once: true }}
             transition={{ delay: i * 0.15 }}
           >
-            <div className="w-10 h-10 rounded-full bg-elite-cyan text-black font-bold flex items-center justify-center mb-5 flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-sj-brass text-sj-bg font-display font-semibold flex items-center justify-center mb-5 flex-shrink-0">
               {step.num}
             </div>
-            <h3 className="text-white font-bold text-lg mb-2">{step.title}</h3>
-            <p className="text-elite-muted text-sm leading-relaxed max-w-xs">{step.desc}</p>
+            <h3 className="text-sj-ink font-semibold text-lg mb-2 font-display">{step.title}</h3>
+            <p className="text-sj-muted text-sm leading-relaxed max-w-xs">{step.desc}</p>
           </motion.div>
         ))}
       </div>

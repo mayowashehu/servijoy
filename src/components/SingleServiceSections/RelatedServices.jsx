@@ -5,92 +5,52 @@ import OptimizedImage from "../OptimizedImage";
 import { ArrowRight, Star } from "lucide-react";
 
 const relatedServices = [
-  {
-    id: 1,
-    name: "Move-in / Move-out Cleaning",
-    description: "Perfect for tenants or homeowners moving in or out.",
-    image: "/images/move-out-cleaning.webp",
-    link: "/services/move-out-cleaning",
-    rating: 4.9,
-    reviewCount: 124,
-  },
-  {
-    id: 2,
-    name: "Office Cleaning",
-    description: "Professional office cleaning to keep your workspace fresh.",
-    image: "/images/office-cleaning.webp",
-    link: "/services/office-cleaning",
-    rating: 4.8,
-    reviewCount: 97,
-  },
-  {
-    id: 3,
-    name: "Carpet & Upholstery Cleaning",
-    description: "Deep cleaning for carpets, sofas, and upholstery.",
-    image: "/images/carpet-cleaning.webp",
-    link: "/services/carpet-cleaning",
-    rating: 4.7,
-    reviewCount: 86,
-  },
+  { id: 1, name: "Move-in / Move-out Cleaning", description: "Perfect for tenants or homeowners moving in or out.", image: "/images/move-out-cleaning.webp", link: "/services/move-out-cleaning", rating: 4.9, reviewCount: 124 },
+  { id: 2, name: "Office Cleaning", description: "Professional office cleaning to keep your workspace fresh.", image: "/images/office-cleaning.webp", link: "/services/office-cleaning", rating: 4.8, reviewCount: 97 },
+  { id: 3, name: "Carpet & Upholstery Cleaning", description: "Deep cleaning for carpets, sofas, and upholstery.", image: "/images/carpet-cleaning.webp", link: "/services/carpet-cleaning", rating: 4.7, reviewCount: 86 },
 ];
 
 const RelatedServices = () => {
   return (
-    <section className="py-20 px-6 md:px-12 lg:px-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Section Title */}
+    <section className="py-16 md:py-24 bg-sj-bg">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1 bg-green/10 text-green/80 rounded-full text-sm font-medium mb-3">
-            DISCOVER MORE
-          </span>
-          <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <span className="sj-tag text-[11px] text-sj-brass mb-4 inline-block">DISCOVER MORE</span>
+          <h3 className="text-2xl md:text-4xl font-semibold font-display text-sj-ink mb-4">
             Services You May Also Like
           </h3>
-          <div className="w-24 h-1 bg-green/50 mx-auto"></div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {relatedServices.map((service) => (
-            <div 
-              key={service.id} 
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+            <div
+              key={service.id}
+              className="bg-sj-card border border-sj-line rounded-2xl overflow-hidden hover:border-sj-brass/30 transition-all group"
             >
-              
-              {/* Service Image with Overlay */}
               <div className="relative overflow-hidden">
-                <OptimizedImage 
-                  alt={service.name} 
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                <OptimizedImage
+                  alt={service.name}
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 brightness-90"
                   src={sampleImg}
-                  rounded="rounded-t-xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
-              {/* Service Details */}
+
               <div className="p-6">
-                {/* Ratings */}
                 <div className="flex items-center mb-3">
-                  <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <span className="ml-1 text-sm font-medium text-gray-800">{service.rating}</span>
-                  <span className="mx-1 text-gray-400">•</span>
-                  <span className="text-sm text-gray-500">{service.reviewCount} reviews</span>
+                  <Star className="w-4 h-4 text-sj-brass fill-sj-brass" />
+                  <span className="ml-1 text-sm font-medium text-sj-ink">{service.rating}</span>
+                  <span className="mx-1 text-sj-muted">•</span>
+                  <span className="text-sm text-sj-muted">{service.reviewCount} reviews</span>
                 </div>
-                
-                <h4 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-green/60 transition-colors duration-300">
-                  {service.name}
-                </h4>
-                
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                {/* CTA Button */}
-                <Link 
-                  to={service.link} 
-                  className="mt-2 inline-flex items-center px-4 py-2 bg-white text-green/60 border border-green/60 rounded-lg font-medium transition-all duration-300 hover:bg-green/60 hover:text-white group-hover:shadow-md"
+
+                <h4 className="text-lg font-semibold font-display text-sj-ink mb-2">{service.name}</h4>
+
+                <p className="text-sj-muted text-sm mb-5 leading-relaxed">{service.description}</p>
+
+                <Link
+                  to={service.link}
+                  className="inline-flex items-center px-4 py-2 bg-transparent text-sj-brass border border-sj-line rounded-full font-medium text-sm transition-all duration-300 hover:border-sj-brass/40"
                 >
                   View Details
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -100,14 +60,13 @@ const RelatedServices = () => {
           ))}
         </div>
 
-        {/* View All Services Button */}
         <div className="text-center mt-12">
-          <Link 
-            to="/services" 
-            className="inline-flex items-center px-6 py-3 bg-green/60 text-white rounded-lg font-medium transition-all duration-300 hover:bg-green/70 hover:shadow-lg"
+          <Link
+            to="/services"
+            className="inline-flex items-center px-8 py-3.5 bg-white text-black rounded-full font-bold text-sm transition-all duration-300 hover:bg-gray-100"
           >
             View All Services
-            <ArrowRight className="ml-2 w-5 h-5" />
+            <ArrowRight className="ml-2 w-4 h-4" />
           </Link>
         </div>
       </div>

@@ -1,15 +1,37 @@
-const InputField = ({ type, placeholder, icon, value, onChange }) => {
+const InputField = ({
+  label,
+  type = "text",
+  placeholder,
+  icon,
+  value,
+  onChange,
+  rightElement,
+  id,
+  className = "",
+}) => {
   return (
-    <div className="flex items-center bg-gray-100 p-3 rounded-lg mb-4 focus-within:ring-2 focus-within:ring-blue-500">
-      <span className="text-gray-500">{icon}</span>
-      <input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        className="flex-1 bg-transparent outline-none ml-2 text-gray-700"
-        aria-label={placeholder}
-      />
+    <div className={`mb-5 ${className}`}>
+      {label && (
+        <label
+          htmlFor={id}
+          className="block text-[10px] sm:text-xs sj-tag text-sj-muted mb-2"
+        >
+          {label}
+        </label>
+      )}
+      <div className="relative flex items-center bg-sj-surface border border-sj-line rounded-xl px-4 py-3 focus-within:border-sj-brass/40 transition-colors">
+        {icon && <span className="text-sj-muted mr-3 flex-shrink-0">{icon}</span>}
+        <input
+          id={id}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          className="flex-1 bg-transparent outline-none text-sj-ink placeholder:text-sj-muted/50 text-sm min-w-0"
+          aria-label={label || placeholder}
+        />
+        {rightElement}
+      </div>
     </div>
   );
 };

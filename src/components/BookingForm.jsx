@@ -3,14 +3,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import SuccessAnimation from "../pages/Dashboard/user/components/AvailableVendorsSections/SuccessAnimation"; // Premium success animation
+import SuccessAnimation from "../pages/Dashboard/user/components/AvailableVendorsSections/SuccessAnimation";
 
 const BookingForm = ({ vendor, onClose }) => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "", // Added email field
+    email: "",
     phone: "",
-    bookingDateTime: null, // Combined date & time as a Date object
+    bookingDateTime: null,
     location: "",
   });
   const [loading, setLoading] = useState(false);
@@ -27,19 +27,11 @@ const BookingForm = ({ vendor, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Basic validation including email
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.phone ||
-      !formData.bookingDateTime ||
-      !formData.location
-    ) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.bookingDateTime || !formData.location) {
       alert("Please fill in all required fields.");
       return;
     }
     setLoading(true);
-    // Simulate API delay
     setTimeout(() => {
       setLoading(false);
       setSuccess(true);
@@ -48,47 +40,48 @@ const BookingForm = ({ vendor, onClose }) => {
 
   const handleClose = () => {
     setSuccess(false);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      bookingDateTime: null,
-      location: "",
-    });
+    setFormData({ name: "", email: "", phone: "", bookingDateTime: null, location: "" });
     onClose();
   };
 
   const handleProceed = () => {
-    // Navigate to auth page, passing bookingData (which now includes email) and vendor details via state
     navigate("/login-signup", { state: { bookingData: formData, vendor } });
   };
 
+  const inputClass =
+    "w-full bg-sj-surface border border-sj-line rounded-xl px-4 py-3 text-sj-ink placeholder:text-sj-muted/60 outline-none focus:border-sj-brass/40 transition-colors text-sm";
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 transition">
-      <div className="bg-white p-6 rounded-xl w-96 relative transition-colors">
-        {/* Cancel Icon */}
-        <div
+    <div className="fixed inset-0 bg-black/60 flex justify-center items-center z-50 p-4">
+      <div className="bg-sj-card border border-sj-line rounded-2xl w-full max-w-sm relative p-6">
+        <button
           onClick={onClose}
-          className="absolute top-0 right-0 cursor-pointer p-2 text-gray-600 hover:bg-gray-200 transition"
+          className="absolute top-3 right-3 text-sj-muted hover:text-sj-ink transition-colors p-1"
+          aria-label="Close"
         >
-          <FaTimes size={20} />
-        </div>
+          <FaTimes size={18} />
+        </button>
+
         {success ? (
-          <div className="text-center p-2">
+          <div className="text-center pt-2">
             <SuccessAnimation />
             <div className="mt-6">
-              <p className="text-gray-700 mb-6 text-center leading-relaxed">
-                Thank you, {formData.name}! Your booking with {vendor.name} has been successfully submitted.
-                To finalize your booking and connect with {vendor.name}, please log in or sign up.
+              <p className="text-sj-muted mb-6 leading-relaxed text-sm">
+                Thank you, {formData.name}! Your booking with {vendor.name} has been successfully
+                submitted. To finalize your booking and connect with {vendor.name}, please log in
+                or sign up.
               </p>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-3">
                 <button
-                  className="btn btn-ghost text-gray-700 transition"
                   onClick={handleClose}
+                  className="px-5 py-2.5 text-sj-muted hover:text-sj-ink transition-colors text-sm font-medium"
                 >
                   Cancel
                 </button>
-                <button className="btn btn-primary" onClick={handleProceed}>
+                <button
+                  onClick={handleProceed}
+                  className="px-5 py-2.5 bg-sj-brass text-black font-bold rounded-full hover:brightness-110 transition-all text-sm"
+                >
                   Proceed to Login / Sign Up
                 </button>
               </div>
@@ -96,9 +89,9 @@ const BookingForm = ({ vendor, onClose }) => {
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
-              Book {vendor.name}
-            </h2>
+            <span className="sj-tag text-[11px] text-sj-brass">BOOK A VISIT</span>
+            <h2 className="text-xl font-semibold font-display text-sj-ink">Book {vendor.name}</h2>
+
             <input
               type="text"
               name="name"
@@ -106,9 +99,8 @@ const BookingForm = ({ vendor, onClose }) => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded-md text-gray-700 transition"
+              className={inputClass}
             />
-            {/* New Email Field */}
             <input
               type="email"
               name="email"
@@ -116,7 +108,7 @@ const BookingForm = ({ vendor, onClose }) => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded-md text-gray-700 transition"
+              className={inputClass}
             />
             <input
               type="tel"
@@ -125,9 +117,8 @@ const BookingForm = ({ vendor, onClose }) => {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded-md text-gray-700 transition"
+              className={inputClass}
             />
-            {/* Combined Date & Time Picker */}
             <DatePicker
               selected={formData.bookingDateTime}
               onChange={handleDateTimeChange}
@@ -136,7 +127,7 @@ const BookingForm = ({ vendor, onClose }) => {
               timeIntervals={15}
               dateFormat="yyyy-MM-dd HH:mm"
               placeholderText="Select booking date & time"
-              className="w-full border p-2 rounded-md text-gray-700 transition"
+              className={inputClass}
             />
             <input
               type="text"
@@ -145,9 +136,13 @@ const BookingForm = ({ vendor, onClose }) => {
               value={formData.location}
               onChange={handleChange}
               required
-              className="w-full border p-2 rounded-md text-gray-700 transition"
+              className={inputClass}
             />
-            <button type="submit" className="btn-green w-full" disabled={loading}>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3.5 bg-sj-brass text-black font-bold rounded-xl hover:brightness-110 transition-all disabled:opacity-60"
+            >
               {loading ? "Processing..." : "Confirm Booking"}
             </button>
           </form>

@@ -15,7 +15,6 @@ const ForgotPasswordPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailValid, setEmailValid] = useState(null);
 
-  // Validate email as user types
   useEffect(() => {
     if (email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,10 +42,10 @@ const ForgotPasswordPage = () => {
     setIsLoading(true);
     try {
       const result = await resetPassword(email);
-      
+
       if (result.success) {
         setSuccess(result.message);
-        setEmail(""); // Clear the form
+        setEmail("");
       } else {
         setError(result.message);
       }
@@ -58,30 +57,30 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-950 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-sj-bg relative p-4 overflow-hidden">
+      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_20%,rgba(217,164,65,0.15),transparent_60%)] pointer-events-none" />
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md"
+        className="w-full max-w-md relative z-10"
       >
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
-          {/* Top decorative bar */}
-          <div className="h-2 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
-          
+        <div className="bg-sj-card border border-sj-line rounded-2xl overflow-hidden">
           <div className="p-8">
             {/* Header */}
             <div className="text-center mb-8">
-              <motion.div 
-                className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-100 dark:bg-gray-700 flex items-center justify-center"
+              <motion.div
+                className="w-16 h-16 mx-auto mb-4 rounded-xl bg-sj-brass/10 border border-sj-brass/20 flex items-center justify-center"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
-                <FaLock className="text-2xl text-blue-500 dark:text-blue-400" />
+                <FaLock className="text-2xl text-sj-brass" />
               </motion.div>
-              <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-200">Forgot Password?</h1>
-              <p className="mt-2 text-gray-600 dark:text-gray-400">
+              <span className="sj-tag text-[11px] text-sj-brass">ACCOUNT RECOVERY</span>
+              <h1 className="mt-3 text-2xl font-semibold font-display text-sj-ink">Forgot Password?</h1>
+              <p className="mt-2 text-sj-muted text-sm leading-relaxed">
                 Enter your email address and we'll send you a link to reset your password.
               </p>
             </div>
@@ -90,15 +89,15 @@ const ForgotPasswordPage = () => {
             <AnimatePresence>
               {success && (
                 <motion.div
-                  className="mb-6 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800 flex items-start"
+                  className="mb-6 p-4 rounded-xl bg-green-500/10 border border-green-500/30 flex items-start"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                 >
-                  <FaCheckCircle className="text-green-500 dark:text-green-400 mt-1 mr-3 flex-shrink-0" />
+                  <FaCheckCircle className="text-green-400 mt-1 mr-3 flex-shrink-0" />
                   <div>
-                    <p className="font-medium text-green-800 dark:text-green-300">{success}</p>
-                    <p className="mt-1 text-sm text-green-700 dark:text-green-400">
+                    <p className="font-medium text-green-300 text-sm">{success}</p>
+                    <p className="mt-1 text-xs text-green-400/80">
                       Check your inbox for the reset link. If you don't see it, check your spam folder.
                     </p>
                   </div>
@@ -110,13 +109,13 @@ const ForgotPasswordPage = () => {
             <AnimatePresence>
               {error && (
                 <motion.div
-                  className="mb-6 p-4 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 flex items-start"
+                  className="mb-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 flex items-start"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                 >
-                  <FaExclamationCircle className="text-red-500 dark:text-red-400 mt-1 mr-3 flex-shrink-0" />
-                  <p className="text-red-800 dark:text-red-300">{error}</p>
+                  <FaExclamationCircle className="text-red-400 mt-1 mr-3 flex-shrink-0" />
+                  <p className="text-red-300 text-sm">{error}</p>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -136,29 +135,29 @@ const ForgotPasswordPage = () => {
                   autoFocus
                 />
                 {emailValid === false && (
-                  <motion.p 
-                    initial={{ opacity: 0, height: 0 }} 
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    className="mt-2 text-sm text-red-600 dark:text-red-400"
+                    className="mt-2 text-sm text-red-400"
                   >
                     Please enter a valid email address
                   </motion.p>
                 )}
               </div>
-              
+
               <Button
                 label={isLoading ? "Sending..." : "Send Reset Link"}
                 type="submit"
                 isLoading={isLoading}
                 disabled={isLoading || !email || emailValid === false || success}
-                className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700"
+                className="w-full py-3.5 bg-sj-brass text-black font-bold rounded-xl hover:brightness-110 transition-all"
               />
 
               {/* Back to login link */}
               <div className="mt-6 flex justify-center">
-                <Link 
-                  to="/login-signup" 
-                  className="flex items-center text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+                <Link
+                  to="/login-signup"
+                  className="flex items-center text-sj-brass hover:brightness-110 transition-all text-sm"
                 >
                   <FaArrowLeft className="mr-2" size={12} />
                   <span>Back to Login</span>
@@ -173,16 +172,16 @@ const ForgotPasswordPage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400"
+          className="mt-8 text-center text-sm text-sj-muted"
         >
           <p>
             Don't have an account?{" "}
-            <Link to="/signup" className="text-blue-500 dark:text-blue-400 hover:underline">
+            <Link to="/signup" className="text-sj-brass hover:underline">
               Sign up here
             </Link>
           </p>
           <p className="mt-2">
-            <Link to="/contact" className="text-blue-500 dark:text-blue-400 hover:underline">
+            <Link to="/contact" className="text-sj-brass hover:underline">
               Need help?
             </Link>
           </p>

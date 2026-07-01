@@ -10,7 +10,7 @@ import HomeContact from '../components/HomeSections/HomeContact'
 
 const HomePage = () => {
   return (
-    <main className="bg-elite-black">
+    <main className="bg-sj-bg">
       <Hero />
       <HowItWorks />
       <FeaturedServices />
