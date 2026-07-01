@@ -1,153 +1,135 @@
 # ServiJoy
 
-ServiJoy is a React + Vite frontend for a modern service marketplace. It aims to connect customers with local service providers, manage bookings, and support separate user, vendor, and admin experiences.
+![Banner placeholder](./docs/banner-placeholder.png)
 
-## What this project is about
+## Overview
 
-- A public marketing website with pages for Home, About, Services, How It Works, Become a Vendor, FAQ, and Service details.
-- A customer/vendor dashboard protected behind authentication for booking management, service exploration, favorites, wallet, disputes, notifications, messages, and settings.
-- An admin panel with protected routes for managing users/vendors, services, orders, disputes, analytics, and platform settings.
-- A polished UI built with Tailwind CSS, custom theme tokens, framer-motion animations, and responsive dashboard layouts.
+ServiJoy is a React + Vite frontend for a modern service marketplace. It's designed to connect customers with local service providers, manage the booking lifecycle, and support three distinct experiences — customer, vendor, and admin — within a single application.
 
-## Key features
+This repository contains the **frontend application only**. It is built to integrate with a backend API for authentication and data; the UI, routing, and role-based access control are fully in place on the client side.
 
-- Public pages:
-  - Home page with service search, featured sections, testimonials, and vendor sign-up information.
-  - Services page with searchable categories and service cards.
-  - Individual service detail pages with reviews and related services.
-  - Vendor list and booking form flows.
-  - Login / signup and forgot-password support.
+## Business Problem
 
-- Authentication / authorization:
-  - `src/context/AuthContext.jsx` manages user state, login, register, admin login, logout, and password reset.
-  - Protected customer/vendor dashboard routes in `src/App.jsx` using `ProtectedRoute`.
-  - Admin-only routes guarded by `src/Admin/AdminRoute.jsx`.
+Local service marketplaces (home services, repairs, personal services, etc.) typically struggle with three things: helping customers discover trustworthy providers, giving vendors a manageable way to handle bookings and earnings, and giving the platform owner visibility and control over the whole system. Most early-stage marketplace products either skip the admin/vendor side entirely or bolt it on later.
 
-- Dashboard experience:
-  - `src/layouts/DashboardLayout.jsx` provides responsive sidebar navigation, theme toggling, header, and footer.
-  - Vendor dashboard pages include service management, booking requests, booking calendar, earnings, and dispute management.
-  - User dashboard pages include explore services, my bookings, favorites, wallet, disputes, messages, notifications, and settings.
+## Solution
 
-- Admin experience:
-  - `src/Admin/layout/AdminDashboardLayout.jsx` handles admin sidebar and header layout.
-  - Admin pages include dashboard overview, user/vendor management, service management, order management, dispute management, analytics, and settings.
+ServiJoy addresses this by building all three experiences from the start:
 
-## Project structure
+- A public marketing site where customers can discover services and vendors
+- An authenticated customer/vendor dashboard for managing bookings, favorites, wallet, and disputes
+- A protected admin panel for managing users, vendors, services, orders, and platform-level disputes
 
-- `src/App.jsx` — root application, route definitions, preloader, public/dashboard/admin route layout.
-- `src/main.jsx` — app entrypoint.
-- `src/context/AuthContext.jsx` — authentication provider and hooks.
-- `src/layouts/DashboardLayout.jsx` — user/vendor dashboard layout.
-- `src/Admin/layout/AdminDashboardLayout.jsx` — admin dashboard layout.
-- `src/components/` — reusable UI components, home sections, service sections, auth sections, dashboard pieces.
-- `src/pages/` — top-level pages for marketing, auth, dashboard, and service details.
-- `src/mock/` — mock API data for local vendor examples.
-- `src/lib/` — UI utilities and theme helpers.
-- `src/index.css` — global styles and Tailwind imports.
+## Features
 
-## Important routes
+**Public pages**
+- Home page with service search, featured sections, and vendor sign-up information
+- Services page with searchable categories and service cards
+- Individual service detail pages with reviews and related services
+- Vendor listing and booking form flows
+- Login/signup, email verification, and forgot-password screens
 
-- Public:
-  - `/`
-  - `/about`
-  - `/services`
-  - `/how-it-works`
-  - `/become-a-vendor`
-  - `/faq`
-  - `/service/:service`
-  - `/vendor-list`
-  - `/login-signup`
-  - `/verify-email`
-  - `/forgot-password`
+**Authentication & authorization**
+- Centralized auth context (`src/context/AuthContext.jsx`) handling login, registration, admin login, logout, and password reset
+- Protected customer/vendor dashboard routes via a `ProtectedRoute` wrapper
+- Separate admin route guard (`src/Admin/AdminRoute.jsx`)
 
-- Dashboard (authenticated users):
-  - `/dashboard`
-  - `/dashboard/manage-services`
-  - `/dashboard/booking-requests`
-  - `/dashboard/explore-services`
-  - `/dashboard/bookings`
-  - `/dashboard/favorites`
-  - `/dashboard/wallet`
-  - `/dashboard/disputes`
-  - `/dashboard/notifications`
-  - `/dashboard/messages`
-  - `/dashboard/settings`
-  - `/dashboard/calendar`
-  - `/dashboard/earnings`
-  - `/dashboard/vendor-disputes`
-  - `/dashboard/book/:serviceName`
+**Customer / vendor dashboard**
+- Responsive sidebar layout with theme toggling (`src/layouts/DashboardLayout.jsx`)
+- Vendor-side: service management, booking requests, booking calendar, earnings, dispute management
+- Customer-side: explore services, bookings, favorites, wallet, disputes, messages, notifications, settings
 
-- Admin:
-  - `/admin/login`
-  - `/admin/dashboard`
-  - `/admin/users`
-  - `/admin/services`
-  - `/admin/orders`
-  - `/admin/disputes`
-  - `/admin/analytics`
-  - `/admin/settings`
+**Admin panel**
+- Dedicated admin layout and sidebar (`src/Admin/layout/AdminDashboardLayout.jsx`)
+- Dashboard overview, user/vendor management, service management, order management, dispute management, analytics, and platform settings
 
-## Tech stack
+**Note on completeness:** the frontend currently expects a backend API (via `VITE_BACKEND_URL`) for authentication and data. Vendor listing data currently falls back to mock data (`src/mock/Api.js`) where a live backend isn't connected.
+
+## Architecture Overview
+
+ServiJoy is a client-rendered single-page application. Routing and layout composition happen in `src/App.jsx`, which defines three route groups — public, dashboard (customer/vendor), and admin — each wrapped in its own layout and access guard. Authentication state is managed centrally through React Context and consumed by route guards and UI components that need to know the current user's role. UI state (theme, sidebar, forms) is handled with local component state and React Hook Form; there is no global state management library in use beyond context.
+
+## Tech Stack
 
 - React 18
 - Vite
 - Tailwind CSS + DaisyUI + tailwindcss-animate
 - React Router DOM
-- Axios for backend requests
-- Framer Motion for animated page transitions
-- React Hook Form and react-datepicker for forms
-- Chart.js / Recharts for analytics displays
-- Socket.IO client support available in dependencies
+- Axios
+- Framer Motion (page transitions)
+- React Hook Form + react-datepicker
+- Chart.js / Recharts (analytics displays)
+- Socket.IO client (available in dependencies)
 
-## Environment setup
+## Screenshots
 
-1. Install dependencies:
+![Screenshot placeholder — home page](./docs/screenshot-home-placeholder.png)
+![Screenshot placeholder — dashboard](./docs/screenshot-dashboard-placeholder.png)
+![Screenshot placeholder — admin panel](./docs/screenshot-admin-placeholder.png)
 
-   ```bash
-   npm install
-   ```
+## Live Demo
 
-2. Create a `.env` file if needed.
+https://servijoy-v1.vercel.app
 
-3. The project expects a backend API URL via `VITE_BACKEND_URL`.
-   Example in `.env`:
+## Repository
 
-   ```env
-   VITE_BACKEND_URL=http://localhost:5000
-   ```
+https://github.com/mayowashehu/servijoy
 
-4. Start development server:
+## Installation
 
-   ```bash
-   npm run dev
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/mayowashehu/servijoy.git
+cd servijoy
 
-5. Build for production:
+# Install dependencies
+npm install
 
-   ```bash
-   npm run build
-   ```
+# Configure environment variables
+# Create a .env file with:
+VITE_BACKEND_URL=http://localhost:5000
 
-6. Preview production build:
+# Start the development server
+npm run dev
 
-   ```bash
-   npm run preview
-   ```
+# Build for production
+npm run build
 
-## Notes
+# Preview the production build
+npm run preview
+```
 
-- The frontend currently relies on backend endpoints for authentication and user actions.
-- `src/context/AuthContext.jsx` is the main auth integration point with login, register, admin login, logout, and password reset.
-- The dashboard and admin routes are gated by authentication state.
-- Mock data is used for vendor listing examples in `src/mock/Api.js`.
+## Project Structure
 
-## Recommended next steps
+```
+src/
+├── App.jsx              # Route definitions, layout composition
+├── main.jsx              # App entry point
+├── context/
+│   └── AuthContext.jsx   # Auth provider and hooks
+├── layouts/
+│   └── DashboardLayout.jsx
+├── Admin/
+│   ├── layout/AdminDashboardLayout.jsx
+│   └── AdminRoute.jsx
+├── components/           # Reusable UI, home sections, dashboard pieces
+├── pages/                 # Marketing, auth, dashboard, and service pages
+├── mock/                  # Mock API data for local development
+└── lib/                   # UI utilities and theme helpers
+```
 
-- Confirm or implement the backend API to support login, registration, logout, and forgot-password flows.
-- Verify the admin login endpoint and admin access guard.
-- Review `src/components` for additional reusable UI patterns and brand styling.
-- Update the homepage title in `index.html` for your brand.
+## Future Improvements
 
----
+- Connect to and confirm a production backend API for authentication, bookings, and payments
+- Replace mock vendor data with live API data
+- Add automated tests for auth flows and protected routing
+- Expand admin analytics with real data sources
+- Update branding/metadata in `index.html` for production launch
 
-ServiJoy is built to be a marketplace front end with separate customer/vendor paths and a strong admin control panel, laid out with modern Tailwind-driven styles and protected routing.
+## License
+
+This project is currently unlicensed. All rights reserved unless a license is added.
+
+## Contribution
+
+This is a solo portfolio/client project and not currently open for external contributions. Feel free to open an issue if you spot a bug or have a suggestion.
