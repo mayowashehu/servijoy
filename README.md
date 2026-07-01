@@ -1,7 +1,5 @@
 # ServiJoy
 
-![Banner placeholder](./docs/banner-placeholder.png)
-
 ## Overview
 
 ServiJoy is a React + Vite frontend for a modern service marketplace. It's designed to connect customers with local service providers, manage the booking lifecycle, and support three distinct experiences — customer, vendor, and admin — within a single application.
@@ -61,12 +59,7 @@ ServiJoy is a client-rendered single-page application. Routing and layout compos
 - Chart.js / Recharts (analytics displays)
 - Socket.IO client (available in dependencies)
 
-## Screenshots
-
-![Screenshot placeholder — home page](./docs/screenshot-home-placeholder.png)
-![Screenshot placeholder — dashboard](./docs/screenshot-dashboard-placeholder.png)
-![Screenshot placeholder — admin panel](./docs/screenshot-admin-placeholder.png)
-
+#
 ## Live Demo
 
 https://servijoy-v1.vercel.app
